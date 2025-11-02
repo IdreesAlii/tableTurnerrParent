@@ -1,5 +1,26 @@
-# Firebase Studio
+# Tableturnerr Landing Page
 
-This is a NextJS starter in Firebase Studio.
+This is a [Next.js](https://nextjs.org/) project for the Tableturnerr landing page, built using Firebase Studio.
 
-To get started, take a look at src/app/page.tsx.
+## Overview
+
+Tableturnerr helps restaurants build their brand and online presence to qualify for platforms like Owner.com. This landing page showcases our services, design work, and partnership with Owner.com.
+
+## Tech Stack
+
+- **Framework**: Next.js with App Router
+- **Styling**: Tailwind CSS with shadcn/ui components
+- **Animations**: Framer Motion
+- **Deployment**: Firebase App Hosting
+
+## Getting Started
+
+The main entry point of the application is `src/app/page.tsx`.
+
+To run the development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

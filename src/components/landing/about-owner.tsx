@@ -7,7 +7,7 @@ export default function AboutOwner() {
   const ownerImage = PlaceHolderImages.find(img => img.id === 'about-owner');
 
   return (
-    <section id="owner-com" className="py-20 md:py-24 bg-secondary/50">
+    <section id="owner-com" className="py-20 md:py-24 bg-background">
       <div className="container grid md:grid-cols-2 gap-12 items-center">
         <div className="relative h-80 w-full md:h-[400px] order-2 md:order-1">
           {ownerImage && (

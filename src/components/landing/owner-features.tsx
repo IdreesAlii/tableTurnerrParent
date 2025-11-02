@@ -51,7 +51,7 @@ export default function OwnerFeatures() {
                       "w-16 h-16 rounded-full flex items-center justify-center bg-background border-2 cursor-pointer transition-all duration-300",
                       activeIndex === index
                         ? "bg-primary text-primary-foreground border-primary scale-110 shadow-lg"
-                        : "bg-secondary hover:bg-muted"
+                        : "bg-background hover:bg-muted"
                     )}
                   >
                     <feature.icon className="w-8 h-8" />

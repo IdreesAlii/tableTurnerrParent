@@ -90,10 +90,10 @@ export default {
         },
         'marquee-slow': {
           from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(-100%)' },
+          to: { transform: 'translateX(calc(-100% - 1rem * 2))' },
         },
         'marquee-slow-2': {
-            from: { transform: 'translateX(100%)' },
+            from: { transform: 'translateX(calc(100% + 1rem * 2))' },
             to: { transform: 'translateX(0)' },
         },
         'spin-slow': {

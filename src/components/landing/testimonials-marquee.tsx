@@ -28,12 +28,6 @@ const testimonials = [
     text: "Very professional team!! 🙌🏽🙌🏽🩵🩵 great working with you",
     image: PlaceHolderImages.find(img => img.id === 'testimonial-4'),
   },
-  {
-    name: 'David K.',
-    title: 'Owner, Burger Barn',
-    text: "Our social media engagement has never been better. Tableturnerr's strategies are pure gold.",
-    image: PlaceHolderImages.find(img => img.id === 'testimonial-5'),
-  },
 ];
 
 const TestimonialCard = ({ name, title, text, image, className }: { name: string; title: string; text: string; image?: any; className?: string }) => (
@@ -67,7 +61,7 @@ export default function TestimonialsMarquee() {
             <TestimonialCard key={`first-set-${index}`} {...testimonial} className="mx-4" />
           ))}
         </div>
-         <div className="absolute top-0 flex animate-marquee-slow-2 [hover]:[animation-play-state:paused]">
+        <div className="absolute top-0 flex animate-marquee-slow-2 [hover]:[animation-play-state:paused]">
           {allTestimonials.map((testimonial, index) => (
             <TestimonialCard key={`second-set-${index}`} {...testimonial} className="mx-4" />
           ))}

@@ -90,11 +90,7 @@ export default {
         },
         'marquee-slow': {
           from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(calc(-100% - 1rem * 2))' },
-        },
-        'marquee-slow-2': {
-            from: { transform: 'translateX(calc(100% + 1rem * 2))' },
-            to: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
         },
         'spin-slow': {
           '0%': { transform: 'rotate(0deg)' },
@@ -105,7 +101,6 @@ export default {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'marquee-slow': 'marquee-slow 80s linear infinite',
-        'marquee-slow-2': 'marquee-slow-2 80s linear infinite',
         'spin-slow': 'spin-slow 60s linear infinite',
       },
     },

@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 const testimonials = [
   {
-    name: 'Restaurant owner',
+    name: 'Danish',
     title: 'Grill Shack',
     text: "Amazing work amazing people!! Definitely my go to 🌊🔥",
     image: PlaceHolderImages.find(img => img.id === 'testimonial-1'),
@@ -49,21 +49,22 @@ const TestimonialCard = ({ name, title, text, image, className }: { name: string
 );
 
 export default function TestimonialsMarquee() {
-  const allTestimonials = [...testimonials, ...testimonials];
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
   return (
     <section className="py-20 md:py-24 bg-secondary/50">
       <div className="container">
         <h2 className="font-headline text-3xl md:text-4xl font-bold text-center">Loved by Restaurants Everywhere</h2>
       </div>
       <div className="relative mt-12 w-full overflow-hidden">
-        <div className="flex animate-marquee-slow [hover]:[animation-play-state:paused]">
-          {allTestimonials.map((testimonial, index) => (
-            <TestimonialCard key={`first-set-${index}`} {...testimonial} className="mx-4" />
-          ))}
-        </div>
-        <div className="absolute top-0 flex animate-marquee-slow-2 [hover]:[animation-play-state:paused]">
-          {allTestimonials.map((testimonial, index) => (
-            <TestimonialCard key={`second-set-${index}`} {...testimonial} className="mx-4" />
+        <div
+          className="flex w-max animate-marquee-slow [hover]:[animation-play-state:paused]"
+        >
+          {duplicatedTestimonials.map((testimonial, index) => (
+            <TestimonialCard
+              key={index}
+              {...testimonial}
+              className="mx-4"
+            />
           ))}
         </div>
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-secondary/50 to-transparent" />

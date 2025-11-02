@@ -8,7 +8,7 @@ export default function OwnerPartnershipBanner() {
   return (
     <div 
       className={cn(
-        'px-10 py-16 rounded-none relative flex items-center justify-center w-full'
+        'px-10 py-16 rounded-none relative flex items-center justify-center w-full overflow-hidden'
       )}
       style={{
         backgroundColor: 'rgba(0, 0, 0, 1)',

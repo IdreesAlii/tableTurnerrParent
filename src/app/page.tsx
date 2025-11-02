@@ -7,11 +7,13 @@ import OwnerFeatures from '@/components/landing/owner-features';
 import QualificationCriteria from '@/components/landing/qualification-criteria';
 import Footer from '@/components/landing/footer';
 import { HeroSection } from '@/components/landing/hero-section-5';
+import OwnerPartnershipBanner from '@/components/landing/owner-partnership-banner';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <HeroSection />
+      <OwnerPartnershipBanner />
       <main className="flex-grow">
         <TestimonialsMarquee />
         <WhatWeDo />

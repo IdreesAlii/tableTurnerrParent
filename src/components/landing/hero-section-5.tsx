@@ -2,8 +2,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { InfiniteSlider } from '@/components/ui/infinite-slider'
-import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { cn } from '@/lib/utils'
 import { Menu, X, ChevronRight } from 'lucide-react'
 import { useScroll, motion } from 'framer-motion'
@@ -56,18 +54,6 @@ export function HeroSection() {
                                 </Button>
                             </div>
                         </div>
-                    </div>
-                </section>
-                <section className="bg-secondary/30 py-12 md:py-16">
-                    <div className="container text-center">
-                        <h3 className="font-headline text-2xl font-bold">Official Strategic Partner of Owner.com</h3>
-                        <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
-                            Owner.com provides the all-in-one platform to power your restaurant's online presence, from commission-free ordering to marketing automation.
-                            {' '}
-                            <Link href="#owner-com" className="text-primary underline-offset-4 hover:underline">
-                                Read more...
-                            </Link>
-                        </p>
                     </div>
                 </section>
             </div>

@@ -29,7 +29,7 @@ export default function OwnerPartnershipBanner() {
         }}
       />
       <div 
-        className="absolute inset-0 border-y-2 border-border"
+        className="absolute inset-0 border-y border-border"
         style={{
           animation: 'border-color-change 6s linear infinite'
         }}

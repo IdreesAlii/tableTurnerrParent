@@ -5,27 +5,27 @@ import { cn } from '@/lib/utils';
 
 const testimonials = [
   {
-    name: 'Sarah L.',
-    title: 'Owner, The Cozy Corner',
-    text: "Tableturnerr transformed our online presence. Our direct bookings have skyrocketed, and we're less reliant on third-party apps.",
+    name: 'Danish',
+    title: 'Owner of Grill Shack',
+    text: "Amazing work amazing people!! Definitely my go to 🌊🔥",
     image: PlaceHolderImages.find(img => img.id === 'testimonial-1'),
   },
   {
-    name: 'Mike R.',
-    title: 'Chef, La Trattoria',
-    text: "The new website is not only beautiful but also incredibly functional. Our customers love the easy ordering system.",
+    name: 'Owner of Miss Mat Cafe',
+    title: '',
+    text: "🙌🙌 amazing team",
     image: PlaceHolderImages.find(img => img.id === 'testimonial-2'),
   },
   {
-    name: 'Chen W.',
-    title: 'Manager, Golden Dragon',
-    text: "I was skeptical at first, but the results speak for themselves. We've seen a 40% increase in online orders.",
+    name: 'Owner of Texbbq',
+    title: '',
+    text: "Great communication and work from the team",
     image: PlaceHolderImages.find(img => img.id === 'testimonial-3'),
   },
   {
-    name: 'Isabella F.',
-    title: 'Founder, The Green Bowl',
-    text: "Working with them was a breeze. They understood our brand and delivered a product that exceeded our expectations.",
+    name: 'Owner of Qadeer Coffee',
+    title: '',
+    text: "Very professional team!! 🙌🏽🙌🏽🩵🩵 great working with you",
     image: PlaceHolderImages.find(img => img.id === 'testimonial-4'),
   },
   {

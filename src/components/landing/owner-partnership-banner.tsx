@@ -44,13 +44,13 @@ export default function OwnerPartnershipBanner() {
     };
   }, [animatedX, animatedY, width, height]);
 
-  const animatedBackground = useMotionTemplate`radial-gradient(400px circle at ${animatedX}px ${animatedY}px, rgba(255, 255, 255, 0.2), transparent 80%)`;
+  const animatedBackground = useMotionTemplate`radial-gradient(200px circle at ${animatedX}px ${animatedY}px, rgba(255, 255, 255, 0.1), transparent 80%)`;
   
   return (
     <div 
       ref={ref}
       className={cn(
-        'px-10 py-16 rounded-none relative flex items-center justify-center w-full'
+        'px-10 py-16 rounded-none relative flex items-center justify-center w-full overflow-hidden'
       )}
       style={{
         backgroundColor: 'rgb(0, 0, 0)',

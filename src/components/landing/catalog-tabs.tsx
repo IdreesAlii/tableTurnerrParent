@@ -15,8 +15,6 @@ const tabsData = [
     description: "SEO-specialised, conversion-optimised.",
     icon: GanttChartSquare,
     visual: {
-      subtitle: "Step 1",
-      title: "A Foundation for Growth",
       items: [
         { type: 'customer', name: 'New Customer', avatarId: 'testimonial-1' },
         { type: 'wait', duration: 'wait 1 day' },
@@ -34,8 +32,6 @@ const tabsData = [
     description: "Menu design, poster design, branding refresh.",
     icon: Star,
     visual: {
-      subtitle: "Step 2",
-      title: "Beautifully Branded Experiences",
       items: [
         { type: 'customer', name: 'New Customer', avatarId: 'testimonial-2' },
         { type: 'wait', duration: 'wait 1 day' },
@@ -53,15 +49,12 @@ const tabsData = [
     description: "Google Business Profile, review optimisation, storefront digital presence.",
     icon: Search,
     visual: {
-      subtitle: "Step 3",
-      title: "Optimized for Discovery",
       items: [
         { type: 'customer', name: 'New Customer', avatarId: 'testimonial-3' },
         { type: 'wait', duration: 'wait 1 day' },
         { type: 'action', text: 'Sent special offer', icon: Gift },
         { type: 'customer_action', text: 'Sarah orders again' },
-        { type: 'wait', duration: 'wait 1 day' },
-        { type_action: 'action', text: 'Sent recommended dishes email', icon: Mail },
+        { type: 'action', text: 'Sent recommended dishes email', icon: Mail },
         { type: 'customer_action', text: 'Sarah orders again & becomes a regular', icon: RefreshCcw },
       ]
     }
@@ -72,8 +65,6 @@ const tabsData = [
     description: "Meeting Owner.com’s standards so you can join with confidence.",
     icon: GanttChartSquare,
     visual: {
-        subtitle: "Step 4",
-        title: "Ready for the Next Level",
         items: [
             { type: 'customer', name: 'New Customer', avatarId: 'testimonial-4' },
             { type: 'wait', duration: 'wait 1 day' },
@@ -91,8 +82,6 @@ const tabsData = [
     description: "Once eligible, we connect you to Owner.com and waive your setup fee.",
     icon: CircleDollarSign,
     visual: {
-        subtitle: "Step 5",
-        title: "Seamless Hand-off to Owner.com",
         items: [
             { type: 'customer', name: 'New Customer', avatarId: 'testimonial-5' },
             { type: 'wait', duration: 'wait 1 day' },
@@ -143,14 +132,14 @@ const CatalogTabs = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 mb-8">
             {tabsData.map((tab, index) => (
-              <div key={index} onClick={() => handleTabClick(index)} className="cursor-pointer px-4 py-2 relative text-center">
+              <div key={index} onClick={() => handleTabClick(index)} className="cursor-pointer px-4 py-3 relative text-center group">
                 <div className="flex items-center justify-center gap-2">
-                  <p className={cn("text-sm", activeIndex === index ? "text-primary" : "text-muted-foreground")}>{`Step ${index + 1}`}</p>
+                  <p className={cn("text-sm font-semibold transition-colors", activeIndex === index ? "text-primary" : "text-muted-foreground group-hover:text-primary/80")}>
+                    <span className={cn("transition-opacity", activeIndex === index ? "opacity-50" : "opacity-50 group-hover:opacity-80")}>{index + 1}</span>
+                    <span className="ml-2">{tab.title}</span>
+                  </p>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-border/20" />
-                {activeIndex === index && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
-                )}
+                <div className={cn("absolute bottom-0 left-0 right-0 h-0.5 bg-border/20 transition-all", activeIndex === index ? "bg-primary" : "group-hover:bg-border/40")} />
               </div>
             ))}
         </div>

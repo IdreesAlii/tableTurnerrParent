@@ -1,75 +1,79 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Card, CardContent } from '@/components/ui/card';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils"
+import { TestimonialCard, TestimonialAuthor } from "@/components/ui/testimonial-card"
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
-const testimonials = [
+
+const testimonialsData = [
   {
-    name: 'Danish',
-    title: 'Grill Shack',
+    author: {
+      name: 'Danish',
+      handle: 'Grill Shack',
+      avatar: PlaceHolderImages.find(img => img.id === 'testimonial-1')?.imageUrl ?? '',
+      avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-1')?.imageHint,
+    },
     text: "Amazing work amazing people!! Definitely my go to 🌊🔥",
-    image: PlaceHolderImages.find(img => img.id === 'testimonial-1'),
   },
   {
-    name: 'Restaurant owner',
-    title: 'Miss Mat Cafe',
+    author: {
+      name: 'Restaurant owner',
+      handle: 'Miss Mat Cafe',
+      avatar: PlaceHolderImages.find(img => img.id === 'testimonial-2')?.imageUrl ?? '',
+      avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-2')?.imageHint,
+    },
     text: "🙌🙌 amazing team",
-    image: PlaceHolderImages.find(img => img.id === 'testimonial-2'),
   },
   {
-    name: 'Restaurant owner',
-    title: 'Texbbq',
+    author: {
+      name: 'Restaurant owner',
+      handle: 'Texbbq',
+      avatar: PlaceHolderImages.find(img => img.id === 'testimonial-3')?.imageUrl ?? '',
+      avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-3')?.imageHint,
+    },
     text: "Great communication and work from the team",
-    image: PlaceHolderImages.find(img => img.id === 'testimonial-3'),
   },
   {
-    name: 'Restaurant owner',
-    title: 'Qadeer Coffee',
+    author: {
+      name: 'Restaurant owner',
+      handle: 'Qadeer Coffee',
+      avatar: PlaceHolderImages.find(img => img.id === 'testimonial-4')?.imageUrl ?? '',
+      avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-4')?.imageHint,
+    },
     text: "Very professional team!! 🙌🏽🙌🏽🩵🩵 great working with you",
-    image: PlaceHolderImages.find(img => img.id === 'testimonial-4'),
   },
 ];
 
-const TestimonialCard = ({ name, title, text, image, className }: { name: string; title: string; text: string; image?: any; className?: string }) => (
-  <Card className={cn("w-[350px] shrink-0", className)}>
-    <CardContent className="p-6 flex flex-col items-start text-left h-full">
-      <p className="text-muted-foreground italic flex-grow">"{text}"</p>
-      <div className="mt-4 flex items-center gap-3">
-        <Avatar>
-          <AvatarImage src={image?.imageUrl} alt={name} data-ai-hint={image?.imageHint} />
-          <AvatarFallback>{name.charAt(0)}</AvatarFallback>
-        </Avatar>
-        <div>
-          <p className="font-semibold">{name}</p>
-          <p className="text-sm text-muted-foreground">{title}</p>
-        </div>
-      </div>
-    </CardContent>
-  </Card>
-);
 
 export default function TestimonialsMarquee() {
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
   return (
-    <section className="py-20 md:py-24 bg-secondary/50">
-      <div className="container">
-        <h2 className="font-headline text-3xl md:text-4xl font-bold text-center">Loved by Restaurants Everywhere</h2>
-      </div>
-      <div className="relative mt-12 w-full overflow-hidden">
-        <div
-          className="flex w-max animate-marquee-slow [hover]:[animation-play-state:paused]"
-        >
-          {duplicatedTestimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={index}
-              {...testimonial}
-              className="mx-4"
-            />
-          ))}
+    <section className={cn(
+      "bg-background text-foreground",
+      "py-12 sm:py-24 md:py-32 px-0",
+    )}>
+      <div className="mx-auto flex max-w-container flex-col items-center gap-4 text-center sm:gap-16">
+        <div className="flex flex-col items-center gap-4 px-4 sm:gap-8">
+          <h2 className="max-w-[720px] text-3xl font-semibold leading-tight sm:text-5xl sm:leading-tight">
+            Loved by Restaurants Everywhere
+          </h2>
         </div>
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-secondary/50 to-transparent" />
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-secondary/50 to-transparent" />
+
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+          <div className="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row [--duration:80s]">
+            <div className="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row group-hover:[animation-play-state:paused]">
+              {[...Array(4)].map((_, setIndex) => (
+                testimonialsData.map((testimonial, i) => (
+                  <TestimonialCard 
+                    key={`${setIndex}-${i}`}
+                    {...testimonial}
+                  />
+                ))
+              ))}
+            </div>
+          </div>
+
+          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-background sm:block" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-background sm:block" />
+        </div>
       </div>
     </section>
-  );
+  )
 }

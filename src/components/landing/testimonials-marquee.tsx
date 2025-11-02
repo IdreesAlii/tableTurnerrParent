@@ -5,26 +5,26 @@ import { cn } from '@/lib/utils';
 
 const testimonials = [
   {
-    name: 'Danish',
-    title: 'Owner of Grill Shack',
+    name: 'Restaurant owner',
+    title: 'Grill Shack',
     text: "Amazing work amazing people!! Definitely my go to 🌊🔥",
     image: PlaceHolderImages.find(img => img.id === 'testimonial-1'),
   },
   {
-    name: 'Owner of Miss Mat Cafe',
-    title: '',
+    name: 'Restaurant owner',
+    title: 'Miss Mat Cafe',
     text: "🙌🙌 amazing team",
     image: PlaceHolderImages.find(img => img.id === 'testimonial-2'),
   },
   {
-    name: 'Owner of Texbbq',
-    title: '',
+    name: 'Restaurant owner',
+    title: 'Texbbq',
     text: "Great communication and work from the team",
     image: PlaceHolderImages.find(img => img.id === 'testimonial-3'),
   },
   {
-    name: 'Owner of Qadeer Coffee',
-    title: '',
+    name: 'Restaurant owner',
+    title: 'Qadeer Coffee',
     text: "Very professional team!! 🙌🏽🙌🏽🩵🩵 great working with you",
     image: PlaceHolderImages.find(img => img.id === 'testimonial-4'),
   },

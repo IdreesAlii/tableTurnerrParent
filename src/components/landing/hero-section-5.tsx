@@ -20,7 +20,7 @@ export function HeroSection() {
                             loop
                             muted
                             playsInline
-                            className="w-full h-full object-cover opacity-20"
+                            className="w-full h-full object-cover"
                             src="https://ik.imagekit.io/lrigu76hy/tailark/dna-video.mp4?updatedAt=1745736251477"
                         ></video>
                          <div className="absolute inset-0 bg-background/80"></div>

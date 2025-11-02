@@ -21,7 +21,7 @@ export default function DesignWork() {
     <section id="design-work" className="py-20 md:py-24 bg-background">
       <div className="container">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="font-headline text-sm font-semibold uppercase text-accent tracking-widest">Our Work</p>
+          <p className="font-headline text-sm font-semibold uppercase text-primary tracking-widest">Our Work</p>
           <h2 className="font-headline text-3xl md:text-4xl font-bold mt-4">Designs That Drive Business</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             We don't just make things look good; we create digital experiences that convert visitors into loyal customers.
@@ -44,7 +44,7 @@ export default function DesignWork() {
               <CardContent className="p-6">
                 <h3 className="font-headline text-lg font-semibold">{work.title}</h3>
                 <p className="text-sm text-muted-foreground">{work.category}</p>
-                <Link href="#" className="text-sm font-semibold text-accent flex items-center mt-2 group/link">
+                <Link href="#" className="text-sm font-semibold text-primary flex items-center mt-2 group/link">
                   View Project <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover/link:translate-x-1" />
                 </Link>
               </CardContent>

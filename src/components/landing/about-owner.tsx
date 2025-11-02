@@ -22,7 +22,7 @@ export default function AboutOwner() {
           )}
         </div>
         <div className="order-1 md:order-2">
-          <p className="font-headline text-sm font-semibold uppercase text-accent tracking-widest">Powered by the Best</p>
+          <p className="font-headline text-sm font-semibold uppercase text-primary tracking-widest">Powered by the Best</p>
           <h2 className="font-headline text-3xl md:text-4xl font-bold mt-4">We've Partnered with Owner.com</h2>
           <p className="mt-6 text-lg text-muted-foreground">
             To give you the best-in-class technology, we build your website on the Owner.com platform. This means you get a powerful, all-in-one solution designed specifically for restaurants, without the enterprise price tag.

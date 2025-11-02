@@ -20,7 +20,7 @@ export function HeroSection() {
                             loop
                             muted
                             playsInline
-                            className="w-full h-full object-cover opacity-30"
+                            className="w-full h-full object-cover opacity-20"
                             src="https://ik.imagekit.io/lrigu76hy/tailark/dna-video.mp4?updatedAt=1745736251477"
                         ></video>
                          <div className="absolute inset-0 bg-background/80"></div>
@@ -28,7 +28,7 @@ export function HeroSection() {
                     <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-6 lg:px-12">
                         <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
                             <h1 className="max-w-2xl text-balance text-5xl font-headline md:text-6xl xl:text-7xl mx-auto">
-                                Stop Staying Small. <span className='text-accent'>Start Scaling.</span>
+                                Stop Staying Small. <span className='text-primary'>Start Scaling.</span>
                             </h1>
                             <p className="mt-8 text-balance text-lg text-muted-foreground">
                                 The big restaurants keep growing — small restaurants stay stuck because they don’t “qualify” for the tools big companies offer. At Tableturnerr, we build your website, your presence, and your brand so you do qualify — then we connect you to Owner.com and waive your setup fee so you can finally scale.

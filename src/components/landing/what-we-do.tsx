@@ -1,27 +1,39 @@
 "use client";
 
-import { Code, Brush, Megaphone } from "lucide-react";
+import { Code, Brush, Megaphone, CheckSquare, Zap } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { cn } from "@/lib/utils";
 
 const services = [
   {
-    icon: <Brush className="h-4 w-4" />,
-    title: 'Stunning Web Design',
-    description: "We craft beautiful, modern websites that capture your restaurant's unique brand and atmosphere, optimized for all devices.",
+    icon: <Code className="h-4 w-4" />,
+    title: 'Website build',
+    description: "SEO-specialised, conversion-optimised",
     area: "md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]",
   },
   {
-    icon: <Code className="h-4 w-4" />,
-    title: 'Direct Ordering Systems',
-    description: 'Stop paying high commissions. We integrate a seamless, commission-free ordering system directly into your website.',
+    icon: <Brush className="h-4 w-4" />,
+    title: 'Design work',
+    description: 'Menu design, poster design, branding refresh',
     area: "md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]",
   },
   {
     icon: <Megaphone className="h-4 w-4" />,
-    title: 'Digital Marketing',
-    description: 'From social media management to local SEO, we help you reach more hungry customers in your area.',
+    title: 'Setup assistance',
+    description: 'Google Business Profile, review optimisation, storefront digital presence',
     area: "md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]",
+  },
+  {
+    icon: <CheckSquare className="h-4 w-4" />,
+    title: "Qualification prep",
+    description: "Meeting Owner.com’s standards so you can join with confidence",
+    area: "md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]",
+  },
+  {
+    icon: <Zap className="h-4 w-4" />,
+    title: "Smooth transition",
+    description: "Once eligible, we connect you to Owner.com and waive your setup fee (see “About Owner” below)",
+    area: "md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]",
   },
 ];
 
@@ -48,18 +60,6 @@ export default function WhatWeDo() {
                         description={service.description}
                     />
                 ))}
-                <GridItem
-                    area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
-                    icon={<Brush className="h-4 w-4" />}
-                    title="This card is also built by Tableturnerr"
-                    description="I'm not even kidding. Ask my mom if you don't believe me."
-                />
-                <GridItem
-                    area="md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]"
-                    icon={<Code className="h-4 w-4" />}
-                    title="Coming soon on Tableturnerr"
-                    description="I'm writing the code as I record this, no shit."
-                />
             </ul>
         </div>
       </div>

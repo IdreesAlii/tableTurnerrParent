@@ -3,60 +3,52 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import Link from "next/link";
-import { useMotionValue, useMotionTemplate, animate } from "framer-motion";
+import { useMotionValue, useMotionTemplate, animate, motion } from "framer-motion";
+import useMeasure from "react-use-measure";
 
 export default function OwnerPartnershipBanner() {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  React.useEffect(() => {
-    const root = document.documentElement;
-    const updateMousePosition = (e: MouseEvent) => {
-      const rect = (e.currentTarget as HTMLElement)?.getBoundingClientRect();
-      if (rect) {
-        x.set(e.clientX - rect.left);
-        y.set(e.clientY - rect.top);
-      }
-    };
-    root.addEventListener('mousemove', updateMousePosition);
-    return () => {
-      root.removeEventListener('mousemove', updateMousePosition);
-    };
-  }, [x, y]);
-
+  const [ref, { width, height }] = useMeasure();
   const animatedX = useMotionValue(0);
   const animatedY = useMotionValue(0);
 
   React.useEffect(() => {
+    if (width === 0 || height === 0) return;
+
     const path = [
       { x: 0, y: 0 },
-      { x: 1, y: 0 },
-      { x: 1, y: 1 },
-      { x: 0, y: 1 },
+      { x: width, y: 0 },
+      { x: width, y: height },
+      { x: 0, y: height },
       { x: 0, y: 0 },
     ];
 
+    const totalLength = 2 * (width + height);
+    const duration = 8; // seconds for one full loop
+
     const controlsX = animate(animatedX, path.map(p => p.x), {
-      duration: 6,
+      duration: duration,
       repeat: Infinity,
-      ease: "linear"
+      ease: "linear",
+      times: [0, width / totalLength, (width + height) / totalLength, (2 * width + height) / totalLength, 1]
     });
     const controlsY = animate(animatedY, path.map(p => p.y), {
-      duration: 6,
+      duration: duration,
       repeat: Infinity,
-      ease: "linear"
+      ease: "linear",
+      times: [0, width / totalLength, (width + height) / totalLength, (2 * width + height) / totalLength, 1]
     });
 
     return () => {
       controlsX.stop();
       controlsY.stop();
     };
-  }, [animatedX, animatedY]);
+  }, [animatedX, animatedY, width, height]);
 
   const animatedBackground = useMotionTemplate`radial-gradient(400px circle at ${animatedX}px ${animatedY}px, rgba(255, 255, 255, 0.2), transparent 80%)`;
   
   return (
     <div 
+      ref={ref}
       className={cn(
         'px-10 py-16 rounded-none relative flex items-center justify-center w-full'
       )}
@@ -69,22 +61,23 @@ export default function OwnerPartnershipBanner() {
         backgroundSize: '20px 20px'
       }}
     >
-        <div 
+        <motion.div 
             className="absolute inset-0"
             style={{
                 background: animatedBackground,
             }}
         />
 
-      <div 
+      <motion.div 
         className="w-4 h-4 rounded-full absolute shadow-[0_0_20px_2px] shadow-current z-10 bg-white text-white"
         style={{
-          top: `calc(${animatedY.get() * 100}% - 8px)`,
-          left: `calc(${animatedX.get() * 100}% - 8px)`,
+          top: animatedY,
+          left: animatedX,
+          transform: 'translate(-50%, -50%)',
         }}
       />
       <div 
-        className="absolute inset-0 border-y border-white/10"
+        className="absolute inset-0 border border-white/10"
       />
 
       <div className="relative z-20 text-center max-w-3xl">

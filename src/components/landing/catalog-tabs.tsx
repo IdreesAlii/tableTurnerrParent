@@ -139,7 +139,15 @@ const CatalogTabs = () => {
                     <span className="ml-2">{tab.title}</span>
                   </p>
                 </div>
-                <div className={cn("absolute bottom-0 left-0 right-0 h-0.5 bg-border/20 transition-all", activeIndex === index ? "bg-primary" : "group-hover:bg-border/40")} />
+                <div className={cn("absolute bottom-0 left-0 right-0 h-0.5 bg-border/20")}>
+                  {activeIndex === index && (
+                    <div
+                      key={activeIndex} 
+                      className="h-full bg-primary origin-left"
+                      style={{ animation: 'progress-bar 7s linear forwards' }}
+                    />
+                  )}
+                </div>
               </div>
             ))}
         </div>

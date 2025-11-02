@@ -122,3 +122,12 @@
     border-color: rgba(255, 255, 255, 0.7); 
   }
 }
+
+@keyframes progress-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

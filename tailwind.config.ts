@@ -102,7 +102,15 @@ export default {
         marquee: {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(calc(-100% - var(--gap)))' }
-        }
+        },
+        'progress-bar': {
+          from: {
+            transform: 'scaleX(0)',
+          },
+          to: {
+            transform: 'scaleX(1)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -110,6 +118,7 @@ export default {
         'marquee-slow': 'marquee-slow 80s linear infinite',
         'spin-slow': 'spin-slow 60s linear infinite',
         marquee: 'marquee var(--duration) linear infinite',
+        'progress-bar': 'progress-bar 7s linear forwards',
       },
     },
   },

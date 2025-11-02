@@ -1,23 +1,30 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Code, Brush, Megaphone } from 'lucide-react';
+"use client";
+
+import { Code, Brush, Megaphone } from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { cn } from "@/lib/utils";
 
 const services = [
   {
-    icon: <Brush className="h-10 w-10 text-primary" />,
+    icon: <Brush className="h-4 w-4" />,
     title: 'Stunning Web Design',
     description: "We craft beautiful, modern websites that capture your restaurant's unique brand and atmosphere, optimized for all devices.",
+    area: "md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]",
   },
   {
-    icon: <Code className="h-10 w-10 text-primary" />,
+    icon: <Code className="h-4 w-4" />,
     title: 'Direct Ordering Systems',
     description: 'Stop paying high commissions. We integrate a seamless, commission-free ordering system directly into your website.',
+    area: "md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]",
   },
   {
-    icon: <Megaphone className="h-10 w-10 text-primary" />,
+    icon: <Megaphone className="h-4 w-4" />,
     title: 'Digital Marketing',
     description: 'From social media management to local SEO, we help you reach more hungry customers in your area.',
+    area: "md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]",
   },
 ];
+
 
 export default function WhatWeDo() {
   return (
@@ -30,20 +37,71 @@ export default function WhatWeDo() {
             We provide everything you need to thrive online, from initial design to ongoing marketing, all tailored for the restaurant industry.
           </p>
         </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {services.map((service, index) => (
-            <Card key={index} className="flex flex-col text-center items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-              <CardHeader>
-                {service.icon}
-              </CardHeader>
-              <CardContent className="flex flex-col flex-grow">
-                <CardTitle className="font-headline text-xl mb-2">{service.title}</CardTitle>
-                <p className="text-muted-foreground flex-grow">{service.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="mt-12">
+            <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
+                {services.map((service, index) => (
+                    <GridItem
+                        key={index}
+                        area={service.area}
+                        icon={service.icon}
+                        title={service.title}
+                        description={service.description}
+                    />
+                ))}
+                <GridItem
+                    area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
+                    icon={<Brush className="h-4 w-4" />}
+                    title="This card is also built by Tableturnerr"
+                    description="I'm not even kidding. Ask my mom if you don't believe me."
+                />
+                <GridItem
+                    area="md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]"
+                    icon={<Code className="h-4 w-4" />}
+                    title="Coming soon on Tableturnerr"
+                    description="I'm writing the code as I record this, no shit."
+                />
+            </ul>
         </div>
       </div>
     </section>
   );
 }
+
+interface GridItemProps {
+  area: string;
+  icon: React.ReactNode;
+  title: string;
+  description: React.ReactNode;
+}
+
+const GridItem = ({ area, icon, title, description }: GridItemProps) => {
+  return (
+    <li className={cn("min-h-[14rem] list-none", area)}>
+      <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+          borderWidth={3}
+        />
+        <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
+          <div className="relative flex flex-1 flex-col justify-between gap-3">
+            <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+              {icon}
+            </div>
+            <div className="space-y-3">
+              <h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
+                {title}
+              </h3>
+              <h2 className="[&_b]:md:font-semibold [&_strong]:md:font-semibold font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+                {description}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+};

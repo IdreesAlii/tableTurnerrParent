@@ -4,49 +4,111 @@ import React, { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Gift, Mail, RefreshCcw, Search, GanttChartSquare, Star, CircleDollarSign } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
 const tabsData = [
   {
-    title: "No Commissions, Ever",
-    description: "We help you build a business that you own, not one that rents customers from delivery apps.",
+    id: 1,
+    title: "Website build",
+    description: "SEO-specialised, conversion-optimised.",
+    icon: GanttChartSquare,
     visual: {
-      subtitle: "Your Business, Your Rules",
-      title: "Say goodbye to profit-eating commissions",
-      imageId: "catalog-1",
+      subtitle: "Step 1",
+      title: "A Foundation for Growth",
+      items: [
+        { type: 'customer', name: 'New Customer', avatarId: 'testimonial-1' },
+        { type: 'wait', duration: 'wait 1 day' },
+        { type: 'action', text: 'Sent special offer', icon: Gift },
+        { type: 'customer_action', text: 'Ciara orders again' },
+        { type: 'wait', duration: 'wait 1 day' },
+        { type: 'action', text: 'Sent recommended dishes email', icon: Mail },
+        { type: 'customer_action', text: 'Ciara orders again & becomes a regular', icon: RefreshCcw },
+      ]
     }
   },
   {
-    title: "Restaurant-Focused",
-    description: "We only work with restaurants. We understand your challenges and speak your language.",
+    id: 2,
+    title: "Design work",
+    description: "Menu design, poster design, branding refresh.",
+    icon: Star,
     visual: {
-      subtitle: "Experts in Your Corner",
-      title: "Solutions designed for the restaurant industry",
-      imageId: "catalog-2",
+      subtitle: "Step 2",
+      title: "Beautifully Branded Experiences",
+      items: [
+        { type: 'customer', name: 'New Customer', avatarId: 'testimonial-2' },
+        { type: 'wait', duration: 'wait 1 day' },
+        { type: 'action', text: 'Sent special offer', icon: Gift },
+        { type: 'customer_action', text: 'Michael orders again' },
+        { type: 'wait', duration: 'wait 1 day' },
+        { type: 'action', text: 'Sent upcoming holiday special', icon: Mail },
+        { type: 'customer_action', text: 'Michael orders again & becomes a regular', icon: RefreshCcw },
+      ]
     }
   },
   {
-    title: "Partnership Approach",
-    description: "Your success is our success. We're in this with you for the long haul.",
+    id: 3,
+    title: "Setup assistance",
+    description: "Google Business Profile, review optimisation, storefront digital presence.",
+    icon: Search,
     visual: {
-      subtitle: "Long-Term Growth",
-      title: "We succeed when you succeed",
-      imageId: "catalog-3",
+      subtitle: "Step 3",
+      title: "Optimized for Discovery",
+      items: [
+        { type: 'customer', name: 'New Customer', avatarId: 'testimonial-3' },
+        { type: 'wait', duration: 'wait 1 day' },
+        { type: 'action', text: 'Sent special offer', icon: Gift },
+        { type: 'customer_action', text: 'Sarah orders again' },
+        { type: 'wait', duration: 'wait 1 day' },
+        { type_action: 'action', text: 'Sent recommended dishes email', icon: Mail },
+        { type: 'customer_action', text: 'Sarah orders again & becomes a regular', icon: RefreshCcw },
+      ]
+    }
+  },
+  {
+    id: 4,
+    title: "Qualification prep",
+    description: "Meeting Owner.com’s standards so you can join with confidence.",
+    icon: GanttChartSquare,
+    visual: {
+        subtitle: "Step 4",
+        title: "Ready for the Next Level",
+        items: [
+            { type: 'customer', name: 'New Customer', avatarId: 'testimonial-4' },
+            { type: 'wait', duration: 'wait 1 day' },
+            { type: 'action', text: 'Sent special offer', icon: Gift },
+            { type: 'customer_action', text: 'David orders again' },
+            { type: 'wait', duration: 'wait 1 day' },
+            { type: 'action', text: 'Sent upcoming holiday special', icon: Mail },
+            { type: 'customer_action', text: 'David orders again & becomes a regular', icon: RefreshCcw },
+        ]
+    }
+  },
+  {
+    id: 5,
+    title: "Smooth transition",
+    description: "Once eligible, we connect you to Owner.com and waive your setup fee.",
+    icon: CircleDollarSign,
+    visual: {
+        subtitle: "Step 5",
+        title: "Seamless Hand-off to Owner.com",
+        items: [
+            { type: 'customer', name: 'New Customer', avatarId: 'testimonial-5' },
+            { type: 'wait', duration: 'wait 1 day' },
+            { type: 'action', text: 'Sent special offer', icon: Gift },
+            { type: 'customer_action', text: 'Emily orders again' },
+            { type: 'wait', duration: 'wait 1 day' },
+            { type: 'action', text: 'Sent recommended dishes email', icon: Mail },
+            { type: 'customer_action', text: 'Emily orders again & becomes a regular', icon: RefreshCcw },
+        ]
     }
   },
 ];
 
 const CatalogTabs = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [emblaRefMenu, emblaApiMenu] = useEmblaCarousel({
-    containScroll: 'keepSnaps',
-    dragFree: true,
-  });
-
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, skipSnaps: false });
   const [activeIndex, setActiveIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
@@ -56,97 +118,95 @@ const CatalogTabs = () => {
     setActiveIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
-  const onProgress = useCallback(() => {
-    if (!emblaApi) return;
-    const scrollProgress = emblaApi.scrollProgress();
-    setProgress(scrollProgress);
-  }, [emblaApi]);
-
   useEffect(() => {
     if (!emblaApi) return;
     onSelect();
-    onProgress();
     emblaApi.on('select', onSelect);
-    emblaApi.on('scroll', onProgress);
     const interval = setInterval(() => {
-      if (emblaApi.scrollProgress() === 1) {
-        emblaApi.scrollTo(0);
-      } else {
-        emblaApi.scrollNext();
-      }
+      emblaApi?.scrollNext();
     }, 7000);
     return () => clearInterval(interval);
-  }, [emblaApi, onSelect, onProgress]);
+  }, [emblaApi, onSelect]);
   
   const handleTabClick = (index: number) => {
     if (!emblaApi) return;
     emblaApi.scrollTo(index);
   };
-
-  const images = tabsData.map(tab => PlaceHolderImages.find(img => img.id === tab.visual.imageId));
-
+  
   return (
-    <section className="py-20 md:py-24 bg-secondary/50 overflow-hidden">
+    <section className="py-20 md:py-24 bg-black overflow-hidden">
       <div className="container">
         <div className="max-w-2xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">Your Partner in Digital Growth</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-headline text-white">Your Partner in Digital Growth</h2>
+          <p className="mt-4 text-lg text-muted-foreground">Our job: Get you ready, then hand you the keys. We build you a stunning, SEO-ready website and create beautiful design work for your restaurant.</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 mb-8">
             {tabsData.map((tab, index) => (
-              <div key={index} onClick={() => handleTabClick(index)} className="cursor-pointer">
-                <div className="flex items-center gap-4">
-                  <p className={cn("text-xl opacity-20", activeIndex === index && "opacity-100")}>{`0${index + 1}`}</p>
-                  <p className={cn("text-xl", activeIndex === index && "font-bold")}>{tab.title}</p>
+              <div key={index} onClick={() => handleTabClick(index)} className="cursor-pointer px-4 py-2 relative text-center">
+                <div className="flex items-center justify-center gap-2">
+                  <p className={cn("text-sm", activeIndex === index ? "text-primary" : "text-muted-foreground")}>{`Step ${index + 1}`}</p>
                 </div>
-                <div className="relative h-1 bg-border/20 rounded-full overflow-hidden mt-2">
-                  <div 
-                    className="absolute top-0 left-0 h-full bg-primary rounded-full"
-                    style={{ 
-                      transform: activeIndex === index ? `scaleX(${progress})` : (index < activeIndex ? 'scaleX(1)' : 'scaleX(0)'),
-                      transformOrigin: 'left',
-                      transition: activeIndex === index ? 'transform 7s linear' : 'none'
-                    }}
-                  />
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-border/20" />
+                {activeIndex === index && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
+                )}
+              </div>
+            ))}
+        </div>
+
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {tabsData.map((tab, index) => (
+              <div key={index} className="flex-[0_0_100%] min-w-0">
+                <div className="bg-gradient-to-br from-background/80 to-secondary/30 rounded-lg p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold mb-2">{tab.title}</h3>
+                    <p className="text-lg text-muted-foreground">{tab.description}</p>
+                  </div>
+                  <div className="relative pl-8">
+                    <div className="absolute left-4 top-0 bottom-0 w-px bg-border/30"></div>
+                    {tab.visual.items.map((item, itemIndex) => {
+                      const avatar = item.type === 'customer' ? PlaceHolderImages.find(img => img.id === item.avatarId) : null;
+                      return (
+                        <div key={itemIndex} className="relative mb-6">
+                            <div className="absolute -left-[1.3rem] top-1/2 -translate-y-1/2 w-3 h-3 bg-border rounded-full" />
+                            {item.type === 'customer' && avatar && (
+                                <div className="flex items-center gap-3 bg-background/50 backdrop-blur-sm p-2 rounded-full w-max">
+                                    <Image src={avatar.imageUrl} alt={avatar.description ?? ''} width={32} height={32} data-ai-hint={avatar.imageHint} className="rounded-full" />
+                                    <div>
+                                        <p className="text-xs text-muted-foreground">New customer</p>
+                                        <p className="font-semibold text-sm">{item.name}</p>
+                                    </div>
+                                </div>
+                            )}
+                            {item.type === 'wait' && <p className="text-sm text-muted-foreground ml-4">{item.duration}</p>}
+                            {item.type === 'action' && (
+                                <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm p-2 rounded-full w-max">
+                                    <item.icon className="h-4 w-4 text-primary" />
+                                    <p className="text-sm">{item.text}</p>
+                                </div>
+                            )}
+                            {item.type === 'customer_action' && <p className="text-sm text-muted-foreground ml-4">{item.text}</p>}
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
+        </div>
 
-          <div className="relative">
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex">
-                {tabsData.map((tab, index) => (
-                  <div key={index} className="flex-[0_0_100%]">
-                    <div className="bg-background rounded-lg p-8">
-                      <p className="text-muted-foreground font-semibold">{tab.visual.subtitle}</p>
-                      <p className="text-2xl font-bold mt-2 mb-6">{tab.visual.title}</p>
-                      <div className="relative h-80 w-full">
-                        {images[index] && (
-                          <Image
-                            src={images[index]?.imageUrl ?? ''}
-                            alt={tab.visual.title}
-                            data-ai-hint={images[index]?.imageHint}
-                            fill
-                            className="object-cover rounded-md"
-                          />
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="absolute top-4 right-4 flex gap-2">
-              <Button size="icon" variant="outline" onClick={scrollPrev}>
-                <ArrowLeft className="h-4 w-4" />
-              </Button>
-              <Button size="icon" variant="outline" onClick={scrollNext}>
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
+        <div className="flex justify-between items-center mt-8">
+            <Button variant="ghost" onClick={scrollPrev} className="text-muted-foreground hover:text-primary">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Previous
+            </Button>
+            <Button variant="ghost" onClick={scrollNext} className="text-muted-foreground hover:text-primary">
+                Next
+                <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
         </div>
       </div>
     </section>

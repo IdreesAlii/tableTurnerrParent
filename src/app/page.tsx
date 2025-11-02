@@ -1,5 +1,4 @@
 import TestimonialsMarquee from '@/components/landing/testimonials-marquee';
-import WhatWeDo from '@/components/landing/what-we-do';
 import CatalogTabs from '@/components/landing/catalog-tabs';
 import DesignWork from '@/components/landing/design-work';
 import AboutOwner from '@/components/landing/about-owner';
@@ -16,7 +15,6 @@ export default function Home() {
       <OwnerPartnershipBanner />
       <main className="flex-grow">
         <TestimonialsMarquee />
-        <WhatWeDo />
         <CatalogTabs />
         <DesignWork />
         <AboutOwner />

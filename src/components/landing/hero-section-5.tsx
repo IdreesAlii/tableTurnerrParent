@@ -6,7 +6,7 @@ import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { cn } from '@/lib/utils'
 import { Menu, X, ChevronRight } from 'lucide-react'
-import { useScroll, motion, useMotionValue, animate } from 'framer-motion'
+import { useScroll, motion } from 'framer-motion'
 
 export function HeroSection() {
     return (
@@ -46,8 +46,8 @@ export function HeroSection() {
                             </div>
                         </div>
 
-                        <div className="relative aspect-[2/3] sm:aspect-video -z-10 lg:absolute lg:inset-0 lg:mx-auto lg:max-w-7xl lg:rounded-[3rem]">
-                            <div className="absolute inset-0 overflow-hidden bg-zinc-950/20 lg:rounded-[3rem] dark:bg-zinc-950/50">
+                        <div className="absolute inset-0 -z-10">
+                            <div className="absolute inset-0 overflow-hidden bg-zinc-950/20 dark:bg-zinc-950/50">
                                 <video
                                     autoPlay
                                     loop

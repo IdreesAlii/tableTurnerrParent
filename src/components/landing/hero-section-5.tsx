@@ -10,53 +10,51 @@ export function HeroSection() {
     return (
         <>
             <HeroHeader />
-            <div className="overflow-x-hidden">
-                <section className="relative w-full h-[80vh] md:h-[90vh] lg:h-screen flex items-center justify-center text-center">
-                    <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-                        <video
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="w-full h-full object-cover"
-                            src="https://ik.imagekit.io/lrigu76hy/tailark/dna-video.mp4?updatedAt=1745736251477"
-                        ></video>
-                         <div className="absolute inset-0 bg-background/80"></div>
-                    </div>
-                    <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-6 lg:px-12">
-                        <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
-                            <h1 className="max-w-2xl text-balance text-5xl font-headline md:text-6xl xl:text-7xl mx-auto">
-                                Turn Your Restaurant Into a Brand.
-                            </h1>
-                            <p className="mt-8 text-balance text-lg text-muted-foreground">
-                                The big restaurants keep growing — small restaurants stay stuck because they don’t “qualify” for the tools big companies offer. At Tableturnerr, we build your website, your presence, and your brand so you do qualify — then we connect you to Owner.com and waive your setup fee so you can finally scale.
-                            </p>
+            <section className="relative w-full h-[80vh] md:h-[90vh] lg:h-screen flex items-center justify-center text-center">
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                        src="https://ik.imagekit.io/lrigu76hy/tailark/dna-video.mp4?updatedAt=1745736251477"
+                    ></video>
+                     <div className="absolute inset-0 bg-background/80"></div>
+                </div>
+                <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-6 lg:px-12">
+                    <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
+                        <h1 className="max-w-2xl text-balance text-5xl font-headline md:text-6xl xl:text-7xl mx-auto">
+                            Turn Your Restaurant Into a Brand.
+                        </h1>
+                        <p className="mt-8 text-balance text-lg text-muted-foreground">
+                            The big restaurants keep growing — small restaurants stay stuck because they don’t “qualify” for the tools big companies offer. At Tableturnerr, we build your website, your presence, and your brand so you do qualify — then we connect you to Owner.com and waive your setup fee so you can finally scale.
+                        </p>
 
-                            <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row">
-                                <Button
-                                    asChild
-                                    size="lg"
-                                    className="h-12 rounded-full pl-5 pr-3 text-base">
-                                    <Link href="#qualification">
-                                        <span className="text-nowrap">Get Started Free</span>
-                                        <ChevronRight className="ml-1" />
-                                    </Link>
-                                </Button>
-                                <Button
-                                    key={2}
-                                    asChild
-                                    size="lg"
-                                    variant="ghost"
-                                    className="h-12 rounded-full px-5 text-base hover:bg-zinc-950/5 dark:hover:bg-white/5">
-                                    <Link href="#design-work">
-                                        <span className="text-nowrap">See Our Work</span>
-                                    </Link>
-                                </Button>
-                            </div>
+                        <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row">
+                            <Button
+                                asChild
+                                size="lg"
+                                className="h-12 rounded-full pl-5 pr-3 text-base">
+                                <Link href="#qualification">
+                                    <span className="text-nowrap">Get Started Free</span>
+                                    <ChevronRight className="ml-1" />
+                                </Link>
+                            </Button>
+                            <Button
+                                key={2}
+                                asChild
+                                size="lg"
+                                variant="ghost"
+                                className="h-12 rounded-full px-5 text-base hover:bg-zinc-950/5 dark:hover:bg-white/5">
+                                <Link href="#design-work">
+                                    <span className="text-nowrap">See Our Work</span>
+                                </Link>
+                            </Button>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </>
     )
 }

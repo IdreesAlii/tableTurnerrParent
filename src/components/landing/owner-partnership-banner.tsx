@@ -46,7 +46,6 @@ export default function OwnerPartnershipBanner() {
   const animatedBackground = useMotionTemplate`radial-gradient(100px circle at ${x}px ${y}px, rgba(255, 255, 255, 0.1), transparent 80%)`;
   
   return (
-    <div className="overflow-x-hidden">
     <div 
       ref={ref}
       className={cn(
@@ -90,7 +89,6 @@ export default function OwnerPartnershipBanner() {
             </p>
         </div>
       </div>
-    </div>
     </div>
   )
 }

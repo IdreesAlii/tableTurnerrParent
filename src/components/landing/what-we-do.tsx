@@ -34,10 +34,10 @@ export default function WhatWeDo() {
           <p className="font-headline text-sm font-semibold uppercase text-primary tracking-widest">What We Do</p>
           <h2 className="font-headline text-3xl md:text-4xl font-bold mt-4">Full-Service Digital Solutions</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            We provide everything you need to thrive online, from initial design to ongoing marketing, all tailored for the restaurant industry.
+            Our job: Get you ready, then hand you the keys. We build you a stunning, SEO-ready website and create beautiful design work for your restaurant.
           </p>
         </div>
-        <div className="mt-12">
+        <div className="mt-12 max-w-5xl mx-auto">
             <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
                 {services.map((service, index) => (
                     <GridItem

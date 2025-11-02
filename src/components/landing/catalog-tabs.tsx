@@ -123,7 +123,7 @@ const CatalogTabs = () => {
   };
   
   return (
-    <section className="py-20 md:py-24 bg-black overflow-hidden">
+    <section className="py-20 md:py-24 bg-black">
       <div className="container">
         <div className="max-w-2xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline text-white">Your Partner in Digital Growth</h2>

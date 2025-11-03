@@ -1,6 +1,6 @@
 import TestimonialsMarquee from '@/components/landing/testimonials-marquee';
 import CatalogTabs from '@/components/landing/catalog-tabs';
-import DesignWork from '@/components/landing/design-work';
+import OwnerCaseStudy from '@/components/landing/owner-case-study';
 import AboutOwner from '@/components/landing/about-owner';
 import OwnerFeatures from '@/components/landing/owner-features';
 import QualificationCriteria from '@/components/landing/qualification-criteria';
@@ -18,7 +18,7 @@ export default function Home() {
       <main className="flex-grow">
         <TestimonialsMarquee />
         <CatalogTabs />
-        <DesignWork />
+        <OwnerCaseStudy />
         <AboutOwner />
         <WhatOwnerDoes />
         <QualificationCriteria />

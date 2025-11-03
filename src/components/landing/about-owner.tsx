@@ -1,38 +1,57 @@
+import { AuroraProvider } from '@/components/ui/aurora-provider';
+import { Tick } from '@/components/icons/tick';
+import { Star } from '@/components/icons/star';
 import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 
 export default function AboutOwner() {
-  const ownerImage = PlaceHolderImages.find(img => img.id === 'about-owner');
-
   return (
     <section id="owner-com" className="py-20 md:py-24 bg-background">
-      <div className="container grid md:grid-cols-2 gap-12 items-center">
-        <div className="relative h-80 w-full md:h-[400px] order-2 md:order-1">
-          {ownerImage && (
-            <Image
-              src={ownerImage.imageUrl}
-              alt={ownerImage.description}
-              data-ai-hint={ownerImage.imageHint}
-              width={600}
-              height={400}
-              className="object-cover rounded-lg shadow-lg w-full h-full"
-            />
-          )}
+      <div className="container grid md:grid-cols-2 gap-12 items-stretch">
+        <div className="relative w-full order-2 md:order-1">
+          <Image
+            src="/Owner_Mobile_App.webp"
+            alt="Owner.com mobile app"
+            fill
+            className="object-cover rounded-lg shadow-lg w-full h-full"
+          />
         </div>
         <div className="order-1 md:order-2">
-          <p className="font-headline text-sm font-semibold uppercase text-primary tracking-widest">Powered by the Best</p>
-          <h2 className="font-headline text-3xl md:text-4xl font-bold mt-4">We've Partnered with Owner.com</h2>
+          <p className="font-headline text-sm font-semibold uppercase text-primary tracking-widest">About Owner.com</p>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold mt-4">When you’re ready, plug into the full Owner.com system.</h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            To give you the best-in-class technology, we build your website on the Owner.com platform. This means you get a powerful, all-in-one solution designed specifically for restaurants, without the enterprise price tag.
+            Owner.com is a leading digital platform for restaurants, valued at $1 billion after a recent $120 million Series C funding round (Bloomberg). As a restaurant owner, you compete daily with large chains that have spent millions of dollars building their websites, loyalty apps and marketing funnels. Owner.com levels that field.
           </p>
-          <Button size="lg" className="mt-8" asChild>
-            <a href="https://owner.com" target="_blank" rel="noopener noreferrer">
-              Learn More About Owner.com
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
-          </Button>
+
+          <div className="mt-8 bg-muted/20 p-6 rounded-lg border border-border/50">
+            <h3 className="text-xl font-bold text-white mb-4">Partner Benefit for You (via Tableturnerr)</h3>
+            <ul className="space-y-3 text-muted-foreground">
+                <li className="flex items-start">
+                    <Star className="h-5 w-5 text-yellow-400 mr-3 mt-1 flex-shrink-0" />
+                    <AuroraProvider>
+                        <span className="aurora-text"><strong>Initial Setup Fee:</strong> <span className="line-through decoration-white/40">$970</span> (waived/$0 for partners)</span>
+                    </AuroraProvider>
+                </li>
+              <li className="flex items-start">
+                <Tick className="h-5 w-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                <span><strong>Monthly Fee:</strong> $500 per location</span>
+              </li>
+              <li className="flex items-start">
+                <Tick className="h-5 w-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                <span><strong>Per-Order Fee:</strong> 5%, paid by guest — not the restaurant</span>
+              </li>
+              <li className="flex items-start">
+                <Tick className="h-5 w-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                <span><strong>Contract:</strong> Month-to-month, no cancellation fees</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="mt-6">
+              <h3 className="text-xl font-bold text-white mb-2">Why this matters:</h3>
+              <p className="text-lg text-muted-foreground">
+                You avoid the high fees of marketplace apps, you get a full stack platform, and you pay predictable pricing.
+              </p>
+          </div>
         </div>
       </div>
     </section>

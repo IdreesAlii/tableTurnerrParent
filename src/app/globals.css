@@ -148,3 +148,26 @@
   }
 }
 
+@keyframes aurora {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.aurora-text {
+    background: linear-gradient(
+        -45deg,
+        #2563eb,
+        #d946ef,
+        #f59e0b,
+        #10b981
+    );
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: aurora 8s ease-in-out infinite alternate;
+}

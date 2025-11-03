@@ -1,6 +1,8 @@
-import { CheckCircle2, XCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Tick } from '@/components/icons/tick';
+import { Cross } from '@/components/icons/cross';
+import { ShinyButton } from "@/components/ui/shiny-button";
 
 const qualifications = {
   mustHaves: [
@@ -32,15 +34,15 @@ export default function QualificationCriteria() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 font-headline text-2xl">
-                <CheckCircle2 className="h-8 w-8 text-green-500" />
-                Who We Work With
+                <Tick className="h-8 w-8 text-green-500" />
+                Who Owner Work With
               </CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
                 {qualifications.mustHaves.map((item, index) => (
                   <li key={index} className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-green-500 mr-3 mt-1 shrink-0" />
+                    <Tick className="h-5 w-5 text-green-500 mr-3 mt-1 shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -50,7 +52,7 @@ export default function QualificationCriteria() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 font-headline text-2xl">
-                <XCircle className="h-8 w-8 text-red-500" />
+                <Cross className="h-8 w-8 text-red-500" />
                 This Might Not Be For You If...
               </CardTitle>
             </CardHeader>
@@ -58,7 +60,7 @@ export default function QualificationCriteria() {
               <ul className="space-y-3">
                 {qualifications.dealBreakers.map((item, index) => (
                   <li key={index} className="flex items-start">
-                    <XCircle className="h-5 w-5 text-red-500 mr-3 mt-1 shrink-0" />
+                    <Cross className="h-5 w-5 text-red-500 mr-3 mt-1 shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -68,7 +70,7 @@ export default function QualificationCriteria() {
         </div>
         <div className="mt-12 text-center">
             <p className="text-lg text-muted-foreground">Sound like a match?</p>
-            <Button size="lg" className="mt-4">Let's Talk</Button>
+            <ShinyButton className="mt-4">Let's Talk</ShinyButton>
         </div>
       </div>
     </section>

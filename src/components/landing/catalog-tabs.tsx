@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect, useCallback } from 'react';
@@ -127,8 +126,8 @@ const CatalogTabs = () => {
             {tabsData.map((tab, index) => (
               <div key={index} className="flex-[0_0_100%] min-w-0">
                 <div className={cn("bg-background rounded-lg p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center")}>
-                   <div className="flex items-center justify-center">
-                      <Image src={tab.visual.src} alt={tab.title} width={600} height={400} className="object-contain" />
+                   <div className="flex items-center justify-center h-[400px]">
+                      <Image src={tab.visual.src} alt={tab.title} width={600} height={400} className="object-cover w-full h-full" />
                     </div>
                     <div className="flex flex-col justify-center">
                       <h3 className="text-2xl md:text-3xl font-bold mb-2">{tab.title}</h3>

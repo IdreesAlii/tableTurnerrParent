@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils"
 import { TestimonialCard, TestimonialAuthor } from "@/components/ui/testimonial-card"
 import { PlaceHolderImages } from "@/lib/placeholder-images";

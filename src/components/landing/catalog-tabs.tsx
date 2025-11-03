@@ -1,10 +1,11 @@
+
 "use client";
 
 import React, { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
-import { ArrowLeft, ArrowRight, Gift, Mail, RefreshCcw, Search, GanttChartSquare, Star, CircleDollarSign } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Gift, Mail, RefreshCcw, Search, GanttChartSquare, Star, CircleDollarSign, Pause, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
@@ -98,6 +99,7 @@ const tabsData = [
 const CatalogTabs = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, skipSnaps: false });
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
@@ -111,11 +113,14 @@ const CatalogTabs = () => {
     if (!emblaApi) return;
     onSelect();
     emblaApi.on('select', onSelect);
+
+    if (isPaused) return;
+
     const interval = setInterval(() => {
       emblaApi?.scrollNext();
     }, 7000);
     return () => clearInterval(interval);
-  }, [emblaApi, onSelect]);
+  }, [emblaApi, onSelect, isPaused]);
   
   const handleTabClick = (index: number) => {
     if (!emblaApi) return;
@@ -142,9 +147,8 @@ const CatalogTabs = () => {
                 <div className={cn("absolute bottom-0 left-0 right-0 h-0.5 bg-border/20")}>
                   {activeIndex === index && (
                     <div
-                      key={activeIndex} 
-                      className="h-full bg-primary origin-left"
-                      style={{ animation: 'progress-bar 7s linear forwards' }}
+                      key={`${activeIndex}-${isPaused}`} 
+                      className={cn("h-full bg-primary origin-left", !isPaused && "animate-progress-bar-7s")}
                     />
                   )}
                 </div>
@@ -199,6 +203,9 @@ const CatalogTabs = () => {
             <Button variant="ghost" onClick={scrollPrev} className="text-muted-foreground hover:text-primary">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Previous
+            </Button>
+            <Button variant="ghost" size="icon" onClick={() => setIsPaused(!isPaused)} className="text-muted-foreground hover:text-primary">
+              {isPaused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
             </Button>
             <Button variant="ghost" onClick={scrollNext} className="text-muted-foreground hover:text-primary">
                 Next

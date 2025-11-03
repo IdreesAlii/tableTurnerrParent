@@ -121,7 +121,7 @@ export default {
         'marquee-slow': 'marquee-slow 80s linear infinite',
         'spin-slow': 'spin-slow 60s linear infinite',
         marquee: 'marquee var(--duration) linear infinite',
-        'progress-bar': 'progress-bar 7s linear forwards',
+        'progress-bar-7s': 'progress-bar 7s linear forwards',
       },
     },
   },

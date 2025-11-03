@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight, Gift, Mail, RefreshCcw, Search, GanttChartSquare, Star, CircleDollarSign, Pause, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import FloatingLogos from './floating-logos';
 
 const tabsData = [
   {
@@ -16,7 +16,7 @@ const tabsData = [
     icon: GanttChartSquare,
     visual: {
       type: 'image',
-      src: '/Ropes Laptop Mockup.webp'
+      src: '/Ropes_Laptop_Mockup.webp'
     }
   },
   {
@@ -26,7 +26,7 @@ const tabsData = [
     icon: Star,
     visual: {
       type: 'image',
-      src: '/Ropes Laptop Mockup.webp'
+      src: '/Printing_Poster_Mockup.webp'
     }
   },
   {
@@ -35,8 +35,8 @@ const tabsData = [
     description: "Google Business Profile, review optimisation, storefront digital presence.",
     icon: Search,
     visual: {
-      type: 'image',
-      src: '/Ropes Laptop Mockup.webp'
+      type: 'component',
+      component: FloatingLogos
     }
   },
   {
@@ -46,7 +46,7 @@ const tabsData = [
     icon: GanttChartSquare,
     visual: {
       type: 'image',
-      src: '/Ropes Laptop Mockup.webp'
+      src: '/Ropes_Laptop_Mockup.webp'
     }
   },
   {
@@ -56,15 +56,22 @@ const tabsData = [
     icon: CircleDollarSign,
     visual: {
       type: 'image',
-      src: '/Ropes Laptop Mockup.webp'
+      src: '/Ropes_Laptop_Mockup.webp'
     }
   },
 ];
 
 const CatalogTabs = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, skipSnaps: false });
+  const [isLogoDragging, setIsLogoDragging] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, skipSnaps: false, watchDrag: !isLogoDragging });
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.reInit({ loop: true, skipSnaps: false, watchDrag: !isLogoDragging });
+    }
+  }, [isLogoDragging, emblaApi]);
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
@@ -112,7 +119,7 @@ const CatalogTabs = () => {
                 <div className={cn("absolute bottom-0 left-0 right-0 h-0.5 bg-border/20")}>
                   {activeIndex === index && (
                     <div
-                      key={`${activeIndex}-${isPaused}`} 
+                      key={`${activeIndex}-${isPaused}`}
                       className={cn("h-full bg-primary origin-left", !isPaused && "animate-progress-bar-7s")}
                     />
                   )}
@@ -126,7 +133,7 @@ const CatalogTabs = () => {
             {tabsData.map((tab, index) => (
               <div key={index} className="flex-[0_0_100%] min-w-0">
                 <div className={cn(tab.visual.type === 'image' ? 'bg-background' : 'bg-gradient-to-br from-background/80 to-secondary/30', "rounded-lg p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center")}>
-                   {tab.visual.type === 'image' ? (
+                  {tab.visual.type === 'image' ? (
                     <>
                       <div className="flex items-center justify-center">
                         <Image src={tab.visual.src} alt={tab.title} width={600} height={400} className="object-contain" />
@@ -138,39 +145,14 @@ const CatalogTabs = () => {
                     </>
                   ) : (
                     <>
-                    <div>
-                      <h3 className="text-2xl md:text-3xl font-bold mb-2">{tab.title}</h3>
-                      <p className="text-lg text-muted-foreground">{tab.description}</p>
-                    </div>
-                    <div className="relative pl-8">
-                      <div className="absolute left-4 top-0 bottom-0 w-px bg-border/30"></div>
-                      {tab.visual.type === 'timeline' && tab.visual.items.map((item, itemIndex) => {
-                        const avatar = item.type === 'customer' ? PlaceHolderImages.find(img => img.id === item.avatarId) : null;
-                        return (
-                          <div key={itemIndex} className="relative mb-6">
-                              <div className="absolute -left-[1.3rem] top-1/2 -translate-y-1/2 w-3 h-3 bg-border rounded-full" />
-                              {item.type === 'customer' && avatar && (
-                                  <div className="flex items-center gap-3 bg-background/50 backdrop-blur-sm p-2 rounded-full w-max">
-                                      <Image src={avatar.imageUrl} alt={avatar.description ?? ''} width={32} height={32} data-ai-hint={avatar.imageHint} className="rounded-full" />
-                                      <div>
-                                          <p className="text-xs text-muted-foreground">New customer</p>
-                                          <p className="font-semibold text-sm">{item.name}</p>
-                                      </div>
-                                  </div>
-                              )}
-                              {item.type === 'wait' && <p className="text-sm text-muted-foreground ml-4">{item.duration}</p>}
-                              {item.type === 'action' && (
-                                  <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm p-2 rounded-full w-max">
-                                      <item.icon className="h-4 w-4 text-primary" />
-                                      <p className="text-sm">{item.text}</p>
-                                  </div>
-                              )}
-                              {item.type === 'customer_action' && <p className="text-sm text-muted-foreground ml-4">{item.text}</p>}
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </>
+                      <div className="flex items-center justify-center h-[400px] w-full rounded-lg" style={{ backgroundColor: '#0B0B0B' }}>
+                        <tab.visual.component onDraggingStateChange={setIsLogoDragging} />
+                      </div>
+                      <div className="flex flex-col justify-center">
+                        <h3 className="text-2xl md:text-3xl font-bold mb-2">{tab.title}</h3>
+                        <p className="text-lg text-muted-foreground">{tab.description}</p>
+                      </div>
+                    </>
                   )}
                 </div>
               </div>

@@ -7,6 +7,7 @@ import QualificationCriteria from '@/components/landing/qualification-criteria';
 import Footer from '@/components/landing/footer';
 import { HeroSection } from '@/components/landing/hero-section-5';
 import OwnerPartnershipBanner from '@/components/landing/owner-partnership-banner';
+import WhatOwnerDoes from '@/components/landing/what-owner-does';
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
         <CatalogTabs />
         <DesignWork />
         <AboutOwner />
-        <OwnerFeatures />
+        <WhatOwnerDoes />
         <QualificationCriteria />
       </main>
       <Footer />

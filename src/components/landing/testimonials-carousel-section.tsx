@@ -43,7 +43,7 @@ const testimonialsData = [
 ];
 
 
-export default function TestimonialsMarquee() {
+export default function TestimonialsCarouselSection() {
   return (
     <section className={cn(
       "bg-background text-foreground",

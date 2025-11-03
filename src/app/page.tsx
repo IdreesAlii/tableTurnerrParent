@@ -1,29 +1,28 @@
-import TestimonialsMarquee from '@/components/landing/testimonials-marquee';
-import CatalogTabs from '@/components/landing/catalog-tabs';
-import OwnerCaseStudy from '@/components/landing/owner-case-study';
-import AboutOwner from '@/components/landing/about-owner';
-import OwnerFeatures from '@/components/landing/owner-features';
-import QualificationCriteria from '@/components/landing/qualification-criteria';
-import Footer from '@/components/landing/footer';
-import { HeroSection, HeroHeader } from '@/components/landing/hero-section-5';
-import OwnerPartnershipBanner from '@/components/landing/owner-partnership-banner';
-import WhatOwnerDoes from '@/components/landing/what-owner-does';
+import TestimonialsCarouselSection from '@/components/landing/testimonials-carousel-section';
+import OurServicesCarouselSection from '@/components/landing/our-services-carousel-section';
+import OwnersTestimonialsSection from '@/components/landing/owners-testimonials-section';
+import AboutOwnerSection from '@/components/landing/about-owner-section';
+import QualificationCriteriaSection from '@/components/landing/qualification-criteria-section';
+import FooterSection from '@/components/landing/footer-section';
+import { HeroSection, HeroHeader } from '@/components/landing/hero-section';
+import PostHeroSubSection from '@/components/landing/post-hero-sub-section';
+import WhatOwnerDoesCircularSection from '@/components/landing/what-owner-does-circular-section';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <HeroHeader />
       <HeroSection />
-      <OwnerPartnershipBanner />
+      <PostHeroSubSection />
       <main className="flex-grow">
-        <TestimonialsMarquee />
-        <CatalogTabs />
-        <OwnerCaseStudy />
-        <AboutOwner />
-        <WhatOwnerDoes />
-        <QualificationCriteria />
+        <TestimonialsCarouselSection />
+        <OurServicesCarouselSection />
+        <OwnersTestimonialsSection />
+        <AboutOwnerSection />
+        <WhatOwnerDoesCircularSection />
+        <QualificationCriteriaSection />
       </main>
-      <Footer />
+      <FooterSection />
     </div>
   );
 }

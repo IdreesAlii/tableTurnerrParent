@@ -18,7 +18,7 @@ const qualifications = {
   ],
 };
 
-export default function QualificationCriteria() {
+export default function QualificationCriteriaSection() {
   return (
     <section id="qualification" className="py-20 md:py-24 bg-background">
       <div className="container px-4">

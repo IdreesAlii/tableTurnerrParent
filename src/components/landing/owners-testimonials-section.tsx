@@ -88,7 +88,7 @@ const testimonials: Testimonial[] = [
   }
 ];
 
-export default function OwnerCaseStudy() {
+export default function OwnersTestimonialsSection() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     align: 'center',

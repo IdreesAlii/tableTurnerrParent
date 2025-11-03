@@ -3,7 +3,7 @@ import { Tick } from '@/components/icons/tick';
 import { Star } from '@/components/icons/star';
 import Image from 'next/image';
 
-export default function AboutOwner() {
+export default function AboutOwnerSection() {
   return (
     <section id="owner-com" className="py-20 md:py-24 bg-background">
       <div className="container px-4 grid md:grid-cols-2 gap-12 items-stretch">

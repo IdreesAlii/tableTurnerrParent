@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { ArrowLeft, ArrowRight, Pause, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import FloatingLogos from './floating-logos';
+import FloatingLogosComp from './floating-logos-comp';
 
 const tabsData = [
   {
@@ -33,7 +33,7 @@ const tabsData = [
     description: "Google Business Profile, review optimisation, storefront digital presence.",
     visual: {
       type: 'component',
-      component: FloatingLogos
+      component: FloatingLogosComp
     }
   },
   {
@@ -56,7 +56,7 @@ const tabsData = [
   },
 ];
 
-const CatalogTabs = () => {
+const OurServicesCarouselSection = () => {
   const [isLogoDragging, setIsLogoDragging] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, skipSnaps: false, watchDrag: !isLogoDragging });
   const [activeIndex, setActiveIndex] = useState(0);
@@ -177,4 +177,4 @@ const CatalogTabs = () => {
   );
 };
 
-export default CatalogTabs;
+export default OurServicesCarouselSection;

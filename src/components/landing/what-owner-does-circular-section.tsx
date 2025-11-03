@@ -53,7 +53,7 @@ const timelineData = [
   },
 ];
 
-export default function WhatOwnerDoes() {
+export default function WhatOwnerDoesCircularSection() {
   return (
     <section className="py-20 px-4 text-center">
       <h2 className="text-4xl font-bold mb-4">What Owner.com Does For You</h2>

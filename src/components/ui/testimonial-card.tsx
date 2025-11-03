@@ -1,5 +1,7 @@
+"use client";
 import { cn } from "@/lib/utils"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import { useState, useEffect } from "react";
 
 export interface TestimonialAuthor {
   name: string
@@ -22,7 +24,16 @@ export function TestimonialCard({
   className
 }: TestimonialCardProps) {
   const Card = href ? 'a' : 'div'
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
   
+  if (!isClient) {
+    return null;
+  }
+
   return (
     <Card
       {...(href ? { href } : {})}

@@ -25,16 +25,8 @@ const tabsData = [
     description: "Menu design, poster design, branding refresh.",
     icon: Star,
     visual: {
-      type: 'timeline',
-      items: [
-        { type: 'customer', name: 'New Customer', avatarId: 'testimonial-2' },
-        { type: 'wait', duration: 'wait 1 day' },
-        { type: 'action', text: 'Sent special offer', icon: Gift },
-        { type: 'customer_action', text: 'Michael orders again' },
-        { type: 'wait', duration: 'wait 1 day' },
-        { type: 'action', text: 'Sent upcoming holiday special', icon: Mail },
-        { type: 'customer_action', text: 'Michael orders again & becomes a regular', icon: RefreshCcw },
-      ]
+      type: 'image',
+      src: '/Ropes Laptop Mockup.webp'
     }
   },
   {
@@ -43,15 +35,8 @@ const tabsData = [
     description: "Google Business Profile, review optimisation, storefront digital presence.",
     icon: Search,
     visual: {
-      type: 'timeline',
-      items: [
-        { type: 'customer', name: 'New Customer', avatarId: 'testimonial-3' },
-        { type: 'wait', duration: 'wait 1 day' },
-        { type: 'action', text: 'Sent special offer', icon: Gift },
-        { type: 'customer_action', text: 'Sarah orders again' },
-        { type: 'action', text: 'Sent recommended dishes email', icon: Mail },
-        { type: 'customer_action', text: 'Sarah orders again & becomes a regular', icon: RefreshCcw },
-      ]
+      type: 'image',
+      src: '/Ropes Laptop Mockup.webp'
     }
   },
   {
@@ -60,16 +45,8 @@ const tabsData = [
     description: "Meeting Owner.com’s standards so you can join with confidence.",
     icon: GanttChartSquare,
     visual: {
-      type: 'timeline',
-      items: [
-          { type: 'customer', name: 'New Customer', avatarId: 'testimonial-4' },
-          { type: 'wait', duration: 'wait 1 day' },
-          { type: 'action', text: 'Sent special offer', icon: Gift },
-          { type: 'customer_action', text: 'David orders again' },
-          { type: 'wait', duration: 'wait 1 day' },
-          { type: 'action', text: 'Sent upcoming holiday special', icon: Mail },
-          { type: 'customer_action', text: 'David orders again & becomes a regular', icon: RefreshCcw },
-      ]
+      type: 'image',
+      src: '/Ropes Laptop Mockup.webp'
     }
   },
   {
@@ -78,16 +55,8 @@ const tabsData = [
     description: "Once eligible, we connect you to Owner.com and waive your setup fee.",
     icon: CircleDollarSign,
     visual: {
-      type: 'timeline',
-      items: [
-          { type: 'customer', name: 'New Customer', avatarId: 'testimonial-5' },
-          { type: 'wait', duration: 'wait 1 day' },
-          { type: 'action', text: 'Sent special offer', icon: Gift },
-          { type: 'customer_action', text: 'Emily orders again' },
-          { type: 'wait', duration: 'wait 1 day' },
-          { type: 'action', text: 'Sent recommended dishes email', icon: Mail },
-          { type: 'customer_action', text: 'Emily orders again & becomes a regular', icon: RefreshCcw },
-      ]
+      type: 'image',
+      src: '/Ropes Laptop Mockup.webp'
     }
   },
 ];

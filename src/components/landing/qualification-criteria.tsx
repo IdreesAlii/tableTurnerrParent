@@ -35,7 +35,7 @@ export default function QualificationCriteria() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 font-headline text-2xl">
                 <Tick className="h-8 w-8 text-green-500" />
-                Who Owner Work With
+                Who Owner Works With
               </CardTitle>
             </CardHeader>
             <CardContent>

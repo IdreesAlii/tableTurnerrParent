@@ -19,6 +19,7 @@ interface RadialOrbitalTimelineProps {
 export default function RadialOrbitalTimeline({
   timelineData = [],
 }: RadialOrbitalTimelineProps) {
+  const [hasMounted, setHasMounted] = useState(false);
   const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({});
   const [rotationAngle, setRotationAngle] = useState<number>(0);
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
@@ -26,6 +27,10 @@ export default function RadialOrbitalTimeline({
   const containerRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const centerViewOnNode = (nodeId: number) => {
     if (!nodeRefs.current[nodeId] || timelineData.length === 0) return;
@@ -58,7 +63,7 @@ export default function RadialOrbitalTimeline({
   };
 
   useEffect(() => {
-    if (!autoRotate || timelineData.length === 0) {
+    if (!autoRotate || timelineData.length === 0 || !hasMounted) {
       return;
     }
 
@@ -71,7 +76,7 @@ export default function RadialOrbitalTimeline({
     }, activeNodeId === null ? 0 : 1700);
 
     return () => clearTimeout(timer);
-  }, [autoRotate, activeNodeId, timelineData]);
+  }, [autoRotate, activeNodeId, timelineData, hasMounted]);
 
 
   const calculateNodePosition = (index: number, total: number) => {
@@ -79,14 +84,14 @@ export default function RadialOrbitalTimeline({
     const radius = 200;
     const radian = (angle * Math.PI) / 180;
 
-    const x = radius * Math.cos(radian);
-    const y = radius * Math.sin(radian);
+    const x = parseFloat((radius * Math.cos(radian)).toFixed(4));
+    const y = parseFloat((radius * Math.sin(radian)).toFixed(4));
 
     const zIndex = Math.round(100 + 50 * Math.sin(radian));
-    const opacity = Math.max(
+    const opacity = parseFloat(Math.max(
       0.4,
       Math.min(1, 0.4 + 0.6 * ((1 + Math.sin(radian)) / 2))
-    );
+    ).toFixed(4));
 
     return { x, y, angle, zIndex, opacity };
   };

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useReducer, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
@@ -20,6 +20,42 @@ interface FeatureStepsProps {
   imageHeight?: string
 }
 
+const initialState = {
+  currentFeature: 0,
+  progress: 0,
+};
+
+function featureReducer(state, action) {
+  switch (action.type) {
+    case 'NEXT_FEATURE':
+      return {
+        ...state,
+        currentFeature: (state.currentFeature + 1) % action.payload.featuresLength,
+        progress: 0,
+      };
+    case 'SET_FEATURE':
+      return {
+        ...state,
+        currentFeature: action.payload,
+        progress: 0,
+      };
+    case 'UPDATE_PROGRESS':
+      if (state.progress >= 100) {
+        return {
+          ...state,
+          currentFeature: (state.currentFeature + 1) % action.payload.featuresLength,
+          progress: 0,
+        };
+      }
+      return {
+        ...state,
+        progress: state.progress + (100 / (action.payload.autoPlayInterval / 100)),
+      };
+    default:
+      return state;
+  }
+}
+
 export function FeatureSteps({
   features,
   className,
@@ -27,18 +63,12 @@ export function FeatureSteps({
   autoPlayInterval = 3000,
   imageHeight = "h-[400px]",
 }: FeatureStepsProps) {
-  const [currentFeature, setCurrentFeature] = useState(0)
-  const [progress, setProgress] = useState(0)
+  const [state, dispatch] = useReducer(featureReducer, initialState);
+  const { currentFeature, progress } = state;
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress(prevProgress => {
-        if (prevProgress >= 100) {
-          setCurrentFeature(prevFeature => (prevFeature + 1) % features.length);
-          return 0;
-        }
-        return prevProgress + (100 / (autoPlayInterval / 100));
-      });
+      dispatch({ type: 'UPDATE_PROGRESS', payload: { featuresLength: features.length, autoPlayInterval } });
     }, 100);
 
     return () => clearInterval(timer);
@@ -60,10 +90,7 @@ export function FeatureSteps({
                 initial={{ opacity: 0.3 }}
                 animate={{ opacity: index === currentFeature ? 1 : 0.3 }}
                 transition={{ duration: 0.5 }}
-                onClick={() => {
-                  setCurrentFeature(index)
-                  setProgress(0)
-                }}
+                onClick={() => dispatch({ type: 'SET_FEATURE', payload: index })}
               >
                 <motion.div
                   className={cn(

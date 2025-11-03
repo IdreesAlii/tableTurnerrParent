@@ -132,7 +132,7 @@ const CatalogTabs = () => {
                     <>
                       <div className="relative w-full" style={{ paddingTop: '66.66%' }}>
                         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                            <Image src={tab.visual.src} alt={tab.title} layout="fill" className="object-cover" />
+                            <Image src={tab.visual.src as string} alt={tab.title} fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
                         </div>
                       </div>
                       <div className="flex flex-col justify-center">
@@ -144,7 +144,7 @@ const CatalogTabs = () => {
                     <>
                       <div className="relative w-full rounded-lg" style={{ paddingTop: '66.66%', backgroundColor: '#0B0B0B' }}>
                         <div className="absolute top-0 left-0 w-full h-full">
-                            <tab.visual.component onDraggingStateChange={setIsLogoDragging} />
+                            {React.createElement(tab.visual.component as any, { onDraggingStateChange: setIsLogoDragging })}
                         </div>
                       </div>
                       <div className="flex flex-col justify-center">

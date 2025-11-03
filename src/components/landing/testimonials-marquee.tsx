@@ -7,8 +7,8 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 const testimonialsData = [
   {
     author: {
-      name: 'Danish',
-      handle: 'Grill Shack',
+      name: 'Grill Shack',
+      handle: 'Restaurant owner',
       avatar: PlaceHolderImages.find(img => img.id === 'testimonial-1')?.imageUrl ?? '',
       avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-1')?.imageHint,
     },
@@ -16,8 +16,8 @@ const testimonialsData = [
   },
   {
     author: {
-      name: 'Restaurant owner',
-      handle: 'Miss Mat Cafe',
+      name: 'Miss Mat Cafe',
+      handle: 'Restaurant owner',
       avatar: PlaceHolderImages.find(img => img.id === 'testimonial-2')?.imageUrl ?? '',
       avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-2')?.imageHint,
     },
@@ -25,8 +25,8 @@ const testimonialsData = [
   },
   {
     author: {
-      name: 'Restaurant owner',
-      handle: 'Texbbq',
+      name: 'Texbbq',
+      handle: 'Restaurant owner',
       avatar: PlaceHolderImages.find(img => img.id === 'testimonial-3')?.imageUrl ?? '',
       avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-3')?.imageHint,
     },
@@ -34,8 +34,8 @@ const testimonialsData = [
   },
   {
     author: {
-      name: 'Restaurant owner',
-      handle: 'Qadeer Coffee',
+      name: 'Qadeer Coffee',
+      handle: 'Restaurant owner',
       avatar: PlaceHolderImages.find(img => img.id === 'testimonial-4')?.imageUrl ?? '',
       avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-4')?.imageHint,
     },
@@ -60,15 +60,29 @@ export default function TestimonialsMarquee() {
 
           <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
             <div className="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row [--duration:80s]">
-              <div className="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row group-hover:[animation-play-state:paused]">
-                {[...Array(4)].map((_, setIndex) => (
-                  testimonialsData.map((testimonial, i) => (
-                    <TestimonialCard 
-                      key={`${setIndex}-${i}`}
-                      {...testimonial}
-                    />
-                  ))
-                ))}
+              {/* Use two identical sets and the `marquee-slow` keyframe (translateX(-50%)) so the loop is seamless */}
+              <div className="flex w-max animate-marquee-slow">
+                <div className="flex shrink-0 justify-around [gap:var(--gap)]">
+                  {[...Array(4)].map((_, setIndex) => (
+                    testimonialsData.map((testimonial, i) => (
+                      <TestimonialCard 
+                        key={`a-${setIndex}-${i}`}
+                        {...testimonial}
+                      />
+                    ))
+                  ))}
+                </div>
+
+                <div aria-hidden className="flex shrink-0 justify-around [gap:var(--gap)]">
+                  {[...Array(4)].map((_, setIndex) => (
+                    testimonialsData.map((testimonial, i) => (
+                      <TestimonialCard 
+                        key={`b-${setIndex}-${i}`}
+                        {...testimonial}
+                      />
+                    ))
+                  ))}
+                </div>
               </div>
             </div>
 

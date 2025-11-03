@@ -1,87 +1,86 @@
 'use client';
 import { cn } from '@/lib/utils';
-import { useMotionValue, animate, motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import useMeasure from 'react-use-measure';
+import React, { useEffect, useRef, useState } from 'react';
 
 type InfiniteSliderProps = {
   children: React.ReactNode;
   gap?: number;
-  duration?: number;
-  durationOnHover?: number;
-  direction?: 'horizontal' | 'vertical';
+  speed?: number; // Speed in pixels per second
   reverse?: boolean;
   className?: string;
+  pauseOnHover?: boolean;
 };
 
 export function InfiniteSlider({
   children,
   gap = 16,
-  duration = 25,
-  durationOnHover,
-  direction = 'horizontal',
+  speed = 50,
   reverse = false,
   className,
+  pauseOnHover = true,
 }: InfiniteSliderProps) {
-  const [currentDuration, setCurrentDuration] = useState(duration);
-  const [ref, { width, height }] = useMeasure();
-  const translation = useMotionValue(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [key, setKey] = useState(0);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
-    let controls;
-    const size = direction === 'horizontal' ? width : height;
-    if (size === 0) return;
-    const contentSize = size + gap;
-    const from = reverse ? -contentSize : 0;
-    const to = reverse ? 0 : -contentSize;
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
 
-    const move = () => {
-      controls = animate(translation, [from, to], {
-        ease: 'linear',
-        duration: currentDuration,
-        repeat: Infinity,
-        repeatType: 'loop',
-        repeatDelay: 0,
-      });
+    const contentBlock = scroller.children[0] as HTMLElement;
+    if (!contentBlock) return;
+
+    const loopWidth = contentBlock.offsetWidth;
+    let animationFrameId: number;
+    
+    let currentPosition = 0;
+    const direction = reverse ? 1 : -1;
+    let lastTimestamp: number | null = null;
+
+    const animate = (timestamp: number) => {
+      if (lastTimestamp === null) {
+        lastTimestamp = timestamp;
+      }
+      const deltaTime = timestamp - lastTimestamp;
+      lastTimestamp = timestamp;
+      
+      if (!isHovering || !pauseOnHover) {
+        const moveDistance = (speed * deltaTime) / 1000;
+        currentPosition += moveDistance * direction;
+
+        if (Math.abs(currentPosition) >= loopWidth) {
+          currentPosition %= loopWidth;
+        }
+        
+        scroller.style.transform = `translateX(${currentPosition}px)`;
+      }
+      
+      animationFrameId = requestAnimationFrame(animate);
     };
-    move();
+
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
-      controls?.stop();
+      cancelAnimationFrame(animationFrameId);
     };
-
-  }, [translation, currentDuration, width, height, gap, direction, reverse, key, isTransitioning]);
-
-  const hoverProps = durationOnHover
-    ? {
-        onHoverStart: () => {
-          setCurrentDuration(durationOnHover);
-        },
-        onHoverEnd: () => {
-          setCurrentDuration(duration);
-        },
-      }
-    : {};
+  }, [children, gap, speed, reverse, isHovering, pauseOnHover]);
 
   return (
-    <div className={cn('overflow-hidden', className)}>
-      <motion.div
-        className='flex w-max'
-        style={{
-          ...(direction === 'horizontal'
-            ? { x: translation }
-            : { y: translation }),
-          gap: `${gap}px`,
-          flexDirection: direction === 'horizontal' ? 'row' : 'column',
-        }}
-        ref={ref}
-        {...hoverProps}
+    <div
+      className={cn(
+        'overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]',
+        className
+      )}
+      onMouseEnter={() => pauseOnHover && setIsHovering(true)}
+      onMouseLeave={() => pauseOnHover && setIsHovering(false)}
+    >
+      <div
+        ref={scrollerRef}
+        className="flex w-max"
+        style={{ willChange: 'transform' }}
       >
-        {children}
-        {children}
-      </motion.div>
+        <div className="flex shrink-0 items-center" style={{ gap: `${gap}px` }}>{children}</div>
+        <div aria-hidden="true" className="flex shrink-0 items-center" style={{ gap: `${gap}px` }}>{children}</div>
+      </div>
     </div>
   );
 }

@@ -22,7 +22,7 @@ export default function OwnerFeatures() {
 
   return (
     <section className="py-20 md:py-32 bg-background overflow-hidden">
-      <div className="container">
+      <div className="container px-4">
         <div className="text-center max-w-2xl mx-auto">
           <p className="font-headline text-sm font-semibold uppercase text-primary tracking-widest">Owner.com Platform</p>
           <h2 className="font-headline text-3xl md:text-4xl font-bold mt-4">The All-In-One Restaurant Platform</h2>

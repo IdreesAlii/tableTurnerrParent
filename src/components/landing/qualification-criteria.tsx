@@ -21,9 +21,9 @@ const qualifications = {
 export default function QualificationCriteria() {
   return (
     <section id="qualification" className="py-20 md:py-24 bg-background">
-      <div className="container">
+      <div className="container px-4">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="font-headline text-sm font-semibold uppercase text-primary tracking-widest">Are We A Good Fit?</p>
+          <p className="font-headline text-sm font-semibold uppercase text-primary tracking-widest">Are You A Good Fit?</p>
           <h2 className="font-headline text-3xl md:text-4xl font-bold mt-4">Qualification Criteria</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             We're selective about our partners to ensure we can deliver amazing results. Here's what we look for.
@@ -69,7 +69,7 @@ export default function QualificationCriteria() {
           </Card>
         </div>
         <div className="mt-12 text-center">
-            <p className="text-lg text-muted-foreground">Sound like a match?</p>
+            <p className="text-lg text-muted-foreground"><span className='font-bold'>In Short</span>, We make you big and perfect enough to fit under Tableturnerr's Qualification then we get you FREE onboarding (its $970 without us)</p>
             <ShinyButton className="mt-4">Let's Talk</ShinyButton>
         </div>
       </div>

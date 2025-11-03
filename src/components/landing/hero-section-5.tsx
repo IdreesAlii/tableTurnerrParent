@@ -35,7 +35,7 @@ export function HeroSection() {
                             size="lg"
                             className="h-12 rounded-full pl-5 pr-3 text-base">
                             <Link href="#qualification">
-                                <span className="text-nowrap">Get Started Free</span>
+                                <span className="text-nowrap">Get Started Now</span>
                                 <ChevronRight className="ml-1" />
                             </Link>
                         </Button>

@@ -11,13 +11,13 @@ const Logo = () => (
 export default function Footer() {
   return (
     <footer className="border-t bg-background">
-      <div className="container py-12">
+      <div className="container px-4 py-12">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <Logo />
             <p className="text-muted-foreground mt-2 text-sm">Turning tables, keeping profits.</p>
           </div>
-          <div className="grid grid-cols-2 md:col-span-2 gap-8">
+          <div className="md:col-span-2">
             <div>
               <h4 className="font-semibold mb-2">Navigation</h4>
               <ul className="space-y-2">
@@ -27,17 +27,10 @@ export default function Footer() {
                 <li><Link href="#qualification" className="text-sm text-muted-foreground hover:text-primary">Qualification</Link></li>
               </ul>
             </div>
-            <div>
-              <h4 className="font-semibold mb-2">Legal</h4>
-              <ul className="space-y-2">
-                <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary">Privacy Policy</Link></li>
-                <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary">Terms of Service</Link></li>
-              </ul>
-            </div>
           </div>
         </div>
-        <div className="mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Tableturnerr. All rights reserved.</p>
+        <div className="mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-muted-foreground text-center md:text-left">&copy; {new Date().getFullYear()} Tableturnerr. All rights reserved.</p>
         </div>
       </div>
     </footer>

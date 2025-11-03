@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function AboutOwner() {
   return (
     <section id="owner-com" className="py-20 md:py-24 bg-background">
-      <div className="container grid md:grid-cols-2 gap-12 items-stretch">
+      <div className="container px-4 grid md:grid-cols-2 gap-12 items-stretch">
         <div className="relative w-full order-2 md:order-1">
           <Image
             src="/Owner_Mobile_App.webp"

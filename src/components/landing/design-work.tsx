@@ -18,12 +18,14 @@ export default function DesignWork() {
 
   return (
     <section id="design-work" className="py-20 md:py-24 bg-background">
-      <FeatureSteps 
-        features={features} 
-        title="Designs That Drive Business" 
-        autoPlayInterval={10000}
-        imageHeight="h-[500px]"
-      />
+        <div className="container px-4">
+            <FeatureSteps 
+                features={features} 
+                title="Designs That Drive Business" 
+                autoPlayInterval={10000}
+                imageHeight="h-[500px]"
+            />
+        </div>
     </section>
   );
 }

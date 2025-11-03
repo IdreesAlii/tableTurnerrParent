@@ -134,7 +134,7 @@ export default function RadialOrbitalTimeline({
 
   return (
     <div
-      className="w-full h-screen flex flex-col items-center justify-center bg-black overflow-hidden"
+      className="w-full h-screen flex flex-col items-center justify-center bg-background overflow-hidden"
       ref={containerRef}
       onClick={handleContainerClick}
     >
@@ -183,7 +183,7 @@ export default function RadialOrbitalTimeline({
                 <div
                   className={`
                   w-10 h-10 rounded-full flex items-center justify-center
-                  ${isExpanded ? 'bg-white text-black' : 'bg-black text-white'}
+                  ${isExpanded ? 'bg-white text-black' : 'bg-background text-white'}
                   border-2 
                   ${
                     isExpanded

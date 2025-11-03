@@ -26,7 +26,7 @@ const tabsData = [
     icon: Star,
     visual: {
       type: 'image',
-      src: PlaceHolderImages.find(img => img.id === 'design-3')?.imageUrl ?? '',
+      src: '/Ropes Laptop Mockup.webp'
     }
   },
   {
@@ -36,7 +36,7 @@ const tabsData = [
     icon: Search,
     visual: {
       type: 'image',
-      src: PlaceHolderImages.find(img => img.id === 'catalog-1')?.imageUrl ?? '',
+      src: '/Ropes Laptop Mockup.webp'
     }
   },
   {
@@ -46,7 +46,7 @@ const tabsData = [
     icon: GanttChartSquare,
     visual: {
       type: 'image',
-      src: PlaceHolderImages.find(img => img.id === 'catalog-2')?.imageUrl ?? '',
+      src: '/Ropes Laptop Mockup.webp'
     }
   },
   {
@@ -56,7 +56,7 @@ const tabsData = [
     icon: CircleDollarSign,
     visual: {
       type: 'image',
-      src: PlaceHolderImages.find(img => img.id === 'catalog-3')?.imageUrl ?? '',
+      src: '/Ropes Laptop Mockup.webp'
     }
   },
 ];

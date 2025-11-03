@@ -1,3 +1,5 @@
+"use client";
+
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { FeatureSteps } from '@/components/ui/feature-section';
 

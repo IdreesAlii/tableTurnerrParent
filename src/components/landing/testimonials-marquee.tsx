@@ -1,7 +1,6 @@
-"use client";
+'use client';
 import { cn } from "@/lib/utils"
 import { TestimonialCard, TestimonialAuthor } from "@/components/ui/testimonial-card"
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 
 const testimonialsData = [
@@ -9,8 +8,8 @@ const testimonialsData = [
     author: {
       name: 'Grill Shack',
       handle: 'Restaurant owner',
-      avatar: PlaceHolderImages.find(img => img.id === 'testimonial-1')?.imageUrl ?? '',
-      avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-1')?.imageHint,
+      avatar: '/Client_Logos/GrillShack.webp',
+      avatarHint: 'Grill Shack Logo',
     },
     text: "Amazing work amazing people!! Definitely my go to 🌊🔥",
   },
@@ -18,17 +17,17 @@ const testimonialsData = [
     author: {
       name: 'Miss Mat Cafe',
       handle: 'Restaurant owner',
-      avatar: PlaceHolderImages.find(img => img.id === 'testimonial-2')?.imageUrl ?? '',
-      avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-2')?.imageHint,
+      avatar: '/Client_Logos/MissMatCafe.webp',
+      avatarHint: 'Miss Mat Cafe Logo',
     },
-    text: "🙌🙌 amazing team",
+    text: "Amazing team 🙌🙌",
   },
   {
     author: {
       name: 'Texbbq',
       handle: 'Restaurant owner',
-      avatar: PlaceHolderImages.find(img => img.id === 'testimonial-3')?.imageUrl ?? '',
-      avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-3')?.imageHint,
+      avatar: '/Client_Logos/TexBBQ.webp',
+      avatarHint: 'Texbbq Logo',
     },
     text: "Great communication and work from the team",
   },
@@ -36,10 +35,10 @@ const testimonialsData = [
     author: {
       name: 'Qadeer Coffee',
       handle: 'Restaurant owner',
-      avatar: PlaceHolderImages.find(img => img.id === 'testimonial-4')?.imageUrl ?? '',
-      avatarHint: PlaceHolderImages.find(img => img.id === 'testimonial-4')?.imageHint,
+      avatar: '/Client_Logos/QadeerCoffee.webp',
+      avatarHint: 'Qadeer Coffee Logo',
     },
-    text: "Very professional team!! 🙌🏽🙌🏽🩵🩵 great working with you",
+    text: "Very professional team!! 🙌🏽🙌🏽 great working with you",
   },
 ];
 

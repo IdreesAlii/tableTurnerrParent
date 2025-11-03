@@ -19,7 +19,7 @@ export default function DesignWork() {
       <FeatureSteps 
         features={features} 
         title="Designs That Drive Business" 
-        autoPlayInterval={5000}
+        autoPlayInterval={10000}
         imageHeight="h-[500px]"
       />
     </section>

@@ -22,3 +22,19 @@ To run the development server:
 ```bash
 npm run dev
 ```
+
+## Using Your Own Images
+
+To use your own images on the site, follow these steps:
+
+1.  Create a `public` folder in the root directory of your project if it doesn't already exist.
+2.  Place your image files (e.g., `logo.png`, `hero-image.jpg`) inside the `public` folder.
+3.  In your components, you can reference these images by starting the path with a `/`.
+
+For example, an image at `public/logo.png` can be used in a component like this:
+
+```jsx
+import Image from 'next/image';
+
+<Image src="/logo.png" alt="My Logo" width={100} height={50} />
+```

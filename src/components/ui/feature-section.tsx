@@ -59,7 +59,10 @@ export function FeatureSteps({
                 initial={{ opacity: 0.3 }}
                 animate={{ opacity: index === currentFeature ? 1 : 0.3 }}
                 transition={{ duration: 0.5 }}
-                onClick={() => setCurrentFeature(index)}
+                onClick={() => {
+                  setCurrentFeature(index)
+                  setProgress(0)
+                }}
               >
                 <motion.div
                   className={cn(

@@ -56,7 +56,7 @@ const tabsData = [
     icon: CircleDollarSign,
     visual: {
       type: 'image',
-      src: '/Ropes_Laptop_Mockup.webp'
+      src: '/OwnerCEO_GroupPhoto.webp'
     }
   },
 ];

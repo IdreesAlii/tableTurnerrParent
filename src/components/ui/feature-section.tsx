@@ -32,16 +32,17 @@ export function FeatureSteps({
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (progress < 100) {
-        setProgress((prev) => prev + 100 / (autoPlayInterval / 100))
-      } else {
-        setCurrentFeature((prev) => (prev + 1) % features.length)
-        setProgress(0)
-      }
-    }, 100)
+      setProgress(prevProgress => {
+        if (prevProgress >= 100) {
+          setCurrentFeature(prevFeature => (prevFeature + 1) % features.length);
+          return 0;
+        }
+        return prevProgress + (100 / (autoPlayInterval / 100));
+      });
+    }, 100);
 
-    return () => clearInterval(timer)
-  }, [progress, features.length, autoPlayInterval])
+    return () => clearInterval(timer);
+  }, [features.length, autoPlayInterval]);
 
   return (
     <div className={cn("p-8 md:p-12", className)}>

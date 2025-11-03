@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect, useCallback } from 'react';
@@ -16,15 +15,8 @@ const tabsData = [
     description: "SEO-specialised, conversion-optimised.",
     icon: GanttChartSquare,
     visual: {
-      items: [
-        { type: 'customer', name: 'New Customer', avatarId: 'testimonial-1' },
-        { type: 'wait', duration: 'wait 1 day' },
-        { type: 'action', text: 'Sent special offer', icon: Gift },
-        { type: 'customer_action', text: 'Ciara orders again' },
-        { type: 'wait', duration: 'wait 1 day' },
-        { type: 'action', text: 'Sent recommended dishes email', icon: Mail },
-        { type: 'customer_action', text: 'Ciara orders again & becomes a regular', icon: RefreshCcw },
-      ]
+      type: 'image',
+      src: '/laptop-mockup.png'
     }
   },
   {
@@ -33,6 +25,7 @@ const tabsData = [
     description: "Menu design, poster design, branding refresh.",
     icon: Star,
     visual: {
+      type: 'timeline',
       items: [
         { type: 'customer', name: 'New Customer', avatarId: 'testimonial-2' },
         { type: 'wait', duration: 'wait 1 day' },
@@ -50,6 +43,7 @@ const tabsData = [
     description: "Google Business Profile, review optimisation, storefront digital presence.",
     icon: Search,
     visual: {
+      type: 'timeline',
       items: [
         { type: 'customer', name: 'New Customer', avatarId: 'testimonial-3' },
         { type: 'wait', duration: 'wait 1 day' },
@@ -66,15 +60,16 @@ const tabsData = [
     description: "Meeting Owner.com’s standards so you can join with confidence.",
     icon: GanttChartSquare,
     visual: {
-        items: [
-            { type: 'customer', name: 'New Customer', avatarId: 'testimonial-4' },
-            { type: 'wait', duration: 'wait 1 day' },
-            { type: 'action', text: 'Sent special offer', icon: Gift },
-            { type: 'customer_action', text: 'David orders again' },
-            { type: 'wait', duration: 'wait 1 day' },
-            { type: 'action', text: 'Sent upcoming holiday special', icon: Mail },
-            { type: 'customer_action', text: 'David orders again & becomes a regular', icon: RefreshCcw },
-        ]
+      type: 'timeline',
+      items: [
+          { type: 'customer', name: 'New Customer', avatarId: 'testimonial-4' },
+          { type: 'wait', duration: 'wait 1 day' },
+          { type: 'action', text: 'Sent special offer', icon: Gift },
+          { type: 'customer_action', text: 'David orders again' },
+          { type: 'wait', duration: 'wait 1 day' },
+          { type: 'action', text: 'Sent upcoming holiday special', icon: Mail },
+          { type: 'customer_action', text: 'David orders again & becomes a regular', icon: RefreshCcw },
+      ]
     }
   },
   {
@@ -83,15 +78,16 @@ const tabsData = [
     description: "Once eligible, we connect you to Owner.com and waive your setup fee.",
     icon: CircleDollarSign,
     visual: {
-        items: [
-            { type: 'customer', name: 'New Customer', avatarId: 'testimonial-5' },
-            { type: 'wait', duration: 'wait 1 day' },
-            { type: 'action', text: 'Sent special offer', icon: Gift },
-            { type: 'customer_action', text: 'Emily orders again' },
-            { type: 'wait', duration: 'wait 1 day' },
-            { type: 'action', text: 'Sent recommended dishes email', icon: Mail },
-            { type: 'customer_action', text: 'Emily orders again & becomes a regular', icon: RefreshCcw },
-        ]
+      type: 'timeline',
+      items: [
+          { type: 'customer', name: 'New Customer', avatarId: 'testimonial-5' },
+          { type: 'wait', duration: 'wait 1 day' },
+          { type: 'action', text: 'Sent special offer', icon: Gift },
+          { type: 'customer_action', text: 'Emily orders again' },
+          { type: 'wait', duration: 'wait 1 day' },
+          { type: 'action', text: 'Sent recommended dishes email', icon: Mail },
+          { type: 'customer_action', text: 'Emily orders again & becomes a regular', icon: RefreshCcw },
+      ]
     }
   },
 ];
@@ -128,8 +124,8 @@ const CatalogTabs = () => {
   };
   
   return (
-    <section className="py-20 md:py-24 bg-black">
-      <div className="container">
+    <section className="bg-background">
+      <div className="container py-20 md:py-24">
         <div className="max-w-2xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline text-white">Your Partner in Digital Growth</h2>
           <p className="mt-4 text-lg text-muted-foreground">Our job: Get you ready, then hand you the keys. We build you a stunning, SEO-ready website and create beautiful design work for your restaurant.</p>
@@ -160,39 +156,53 @@ const CatalogTabs = () => {
           <div className="flex">
             {tabsData.map((tab, index) => (
               <div key={index} className="flex-[0_0_100%] min-w-0">
-                <div className="bg-gradient-to-br from-background/80 to-secondary/30 rounded-lg p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
-                  <div>
-                    <h3 className="text-2xl md:text-3xl font-bold mb-2">{tab.title}</h3>
-                    <p className="text-lg text-muted-foreground">{tab.description}</p>
-                  </div>
-                  <div className="relative pl-8">
-                    <div className="absolute left-4 top-0 bottom-0 w-px bg-border/30"></div>
-                    {tab.visual.items.map((item, itemIndex) => {
-                      const avatar = item.type === 'customer' ? PlaceHolderImages.find(img => img.id === item.avatarId) : null;
-                      return (
-                        <div key={itemIndex} className="relative mb-6">
-                            <div className="absolute -left-[1.3rem] top-1/2 -translate-y-1/2 w-3 h-3 bg-border rounded-full" />
-                            {item.type === 'customer' && avatar && (
-                                <div className="flex items-center gap-3 bg-background/50 backdrop-blur-sm p-2 rounded-full w-max">
-                                    <Image src={avatar.imageUrl} alt={avatar.description ?? ''} width={32} height={32} data-ai-hint={avatar.imageHint} className="rounded-full" />
-                                    <div>
-                                        <p className="text-xs text-muted-foreground">New customer</p>
-                                        <p className="font-semibold text-sm">{item.name}</p>
-                                    </div>
-                                </div>
-                            )}
-                            {item.type === 'wait' && <p className="text-sm text-muted-foreground ml-4">{item.duration}</p>}
-                            {item.type === 'action' && (
-                                <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm p-2 rounded-full w-max">
-                                    <item.icon className="h-4 w-4 text-primary" />
-                                    <p className="text-sm">{item.text}</p>
-                                </div>
-                            )}
-                            {item.type === 'customer_action' && <p className="text-sm text-muted-foreground ml-4">{item.text}</p>}
-                        </div>
-                      )
-                    })}
-                  </div>
+                <div className={cn(tab.visual.type === 'image' ? 'bg-background' : 'bg-gradient-to-br from-background/80 to-secondary/30', "rounded-lg p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center")}>
+                   {tab.visual.type === 'image' ? (
+                    <>
+                      <div className="flex items-center justify-center">
+                        <Image src={tab.visual.src} alt={tab.title} width={600} height={400} className="object-contain" />
+                      </div>
+                      <div className="flex flex-col justify-center">
+                        <h3 className="text-2xl md:text-3xl font-bold mb-2">{tab.title}</h3>
+                        <p className="text-lg text-muted-foreground">{tab.description}</p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold mb-2">{tab.title}</h3>
+                      <p className="text-lg text-muted-foreground">{tab.description}</p>
+                    </div>
+                    <div className="relative pl-8">
+                      <div className="absolute left-4 top-0 bottom-0 w-px bg-border/30"></div>
+                      {tab.visual.type === 'timeline' && tab.visual.items.map((item, itemIndex) => {
+                        const avatar = item.type === 'customer' ? PlaceHolderImages.find(img => img.id === item.avatarId) : null;
+                        return (
+                          <div key={itemIndex} className="relative mb-6">
+                              <div className="absolute -left-[1.3rem] top-1/2 -translate-y-1/2 w-3 h-3 bg-border rounded-full" />
+                              {item.type === 'customer' && avatar && (
+                                  <div className="flex items-center gap-3 bg-background/50 backdrop-blur-sm p-2 rounded-full w-max">
+                                      <Image src={avatar.imageUrl} alt={avatar.description ?? ''} width={32} height={32} data-ai-hint={avatar.imageHint} className="rounded-full" />
+                                      <div>
+                                          <p className="text-xs text-muted-foreground">New customer</p>
+                                          <p className="font-semibold text-sm">{item.name}</p>
+                                      </div>
+                                  </div>
+                              )}
+                              {item.type === 'wait' && <p className="text-sm text-muted-foreground ml-4">{item.duration}</p>}
+                              {item.type === 'action' && (
+                                  <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm p-2 rounded-full w-max">
+                                      <item.icon className="h-4 w-4 text-primary" />
+                                      <p className="text-sm">{item.text}</p>
+                                  </div>
+                              )}
+                              {item.type === 'customer_action' && <p className="text-sm text-muted-foreground ml-4">{item.text}</p>}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </>
+                  )}
                 </div>
               </div>
             ))}

@@ -16,7 +16,7 @@ const tabsData = [
     icon: GanttChartSquare,
     visual: {
       type: 'image',
-      src: '/laptop-mockup.png'
+      src: '/Ropes Laptop Mockup.webp'
     }
   },
   {

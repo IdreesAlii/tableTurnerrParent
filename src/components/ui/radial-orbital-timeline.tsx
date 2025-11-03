@@ -50,9 +50,10 @@ export default function RadialOrbitalTimeline({
         }
       });
 
-      newState[id] = !prev[id];
+      const isExpanding = !prev[id];
+      newState[id] = isExpanding;
 
-      if (!prev[id]) {
+      if (isExpanding) {
         setActiveNodeId(id);
         setAutoRotate(false);
         centerViewOnNode(id);
@@ -77,7 +78,7 @@ export default function RadialOrbitalTimeline({
             return Math.abs(angle - 270) < 0.5;
           });
 
-          if (topNode) {
+          if (topNode && !activeNodeId) {
             setExpandedItems({ [topNode.id]: true });
             setAutoRotate(false);
 
@@ -96,7 +97,24 @@ export default function RadialOrbitalTimeline({
         clearInterval(rotationTimer);
       }
     };
-  }, [autoRotate, viewMode, timelineData]);
+  }, [autoRotate, viewMode, timelineData, activeNodeId]);
+
+  useEffect(() => {
+    if (activeNodeId === null || autoRotate) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      const currentIndex = timelineData.findIndex((item) => item.id === activeNodeId);
+      if (currentIndex > -1) {
+        const nextIndex = (currentIndex + 1) % timelineData.length;
+        toggleItem(timelineData[nextIndex].id);
+      }
+    }, 4200);
+
+    return () => clearTimeout(timer);
+  }, [activeNodeId, autoRotate, timelineData]);
+
 
   const centerViewOnNode = (nodeId: number) => {
     if (viewMode !== "orbital" || !nodeRefs.current[nodeId]) return;

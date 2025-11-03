@@ -130,8 +130,10 @@ const CatalogTabs = () => {
                 <div className="rounded-lg p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
                   {tab.visual.type === 'image' ? (
                     <>
-                      <div className="flex items-center justify-center h-[240.5px] md:h-[400px] w-full">
-                        <Image src={tab.visual.src} alt={tab.title} width={600} height={400} className="object-contain h-full w-auto" />
+                      <div className="relative w-full" style={{ paddingTop: '66.66%' }}>
+                        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                            <Image src={tab.visual.src} alt={tab.title} layout="fill" className="object-cover" />
+                        </div>
                       </div>
                       <div className="flex flex-col justify-center">
                         <h3 className="text-2xl md:text-3xl font-bold mb-2">{tab.title}</h3>
@@ -140,8 +142,10 @@ const CatalogTabs = () => {
                     </>
                   ) : (
                     <>
-                      <div className="flex items-center justify-center h-[240.5px] md:h-[400px] w-full rounded-lg" style={{ backgroundColor: '#0B0B0B' }}>
-                        <tab.visual.component onDraggingStateChange={setIsLogoDragging} />
+                      <div className="relative w-full rounded-lg" style={{ paddingTop: '66.66%', backgroundColor: '#0B0B0B' }}>
+                        <div className="absolute top-0 left-0 w-full h-full">
+                            <tab.visual.component onDraggingStateChange={setIsLogoDragging} />
+                        </div>
                       </div>
                       <div className="flex flex-col justify-center">
                         <h3 className="text-2xl md:text-3xl font-bold mb-2">{tab.title}</h3>

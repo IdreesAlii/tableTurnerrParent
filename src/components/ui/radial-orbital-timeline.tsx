@@ -1,8 +1,5 @@
-"use client";
+'use client';
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface TimelineItem {
@@ -12,7 +9,6 @@ interface TimelineItem {
   content: string;
   category: string;
   icon: React.ElementType;
-  status: "completed" | "in-progress" | "pending";
 }
 
 interface RadialOrbitalTimelineProps {
@@ -76,6 +72,20 @@ export default function RadialOrbitalTimeline({
       rotationTimer = setInterval(() => {
         setRotationAngle((prev) => {
           const newAngle = (prev + 0.3) % 360;
+          const topNode = timelineData.find((item, index) => {
+            const angle = ((index / timelineData.length) * 360 + newAngle) % 360;
+            return Math.abs(angle - 270) < 0.5;
+          });
+
+          if (topNode) {
+            setExpandedItems({ [topNode.id]: true });
+            setAutoRotate(false);
+
+            setTimeout(() => {
+              setExpandedItems({});
+              setAutoRotate(true);
+            }, 500);
+          }
           return Number(newAngle.toFixed(3));
         });
       }, 50);
@@ -86,7 +96,7 @@ export default function RadialOrbitalTimeline({
         clearInterval(rotationTimer);
       }
     };
-  }, [autoRotate, viewMode]);
+  }, [autoRotate, viewMode, timelineData]);
 
   const centerViewOnNode = (nodeId: number) => {
     if (viewMode !== "orbital" || !nodeRefs.current[nodeId]) return;
@@ -113,19 +123,6 @@ export default function RadialOrbitalTimeline({
     );
 
     return { x, y, angle, zIndex, opacity };
-  };
-
-  const getStatusStyles = (status: TimelineItem["status"]): string => {
-    switch (status) {
-      case "completed":
-        return "text-white bg-black border-white";
-      case "in-progress":
-        return "text-black bg-white border-black";
-      case "pending":
-        return "text-white bg-black/40 border-white/50";
-      default:
-        return "text-white bg-black/40 border-white/50";
-    }
   };
 
   return (
@@ -204,23 +201,7 @@ export default function RadialOrbitalTimeline({
                   <Card className="absolute top-20 left-1/2 -translate-x-1/2 w-64 bg-black/90 backdrop-blur-lg border-white/30 shadow-xl shadow-white/10 overflow-visible">
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/50"></div>
                     <CardHeader className="pb-2">
-                      <div className="flex justify-between items-center">
-                        <Badge
-                          className={`px-2 text-xs ${getStatusStyles(
-                            item.status
-                          )}`}
-                        >
-                          {item.status === "completed"
-                            ? "COMPLETE"
-                            : item.status === "in-progress"
-                            ? "IN PROGRESS"
-                            : "PENDING"}
-                        </Badge>
-                        <span className="text-xs font-mono text-white/50">
-                          {item.date}
-                        </span>
-                      </div>
-                      <CardTitle className="text-sm mt-2">
+                      <CardTitle className="text-sm">
                         {item.title}
                       </CardTitle>
                     </CardHeader>

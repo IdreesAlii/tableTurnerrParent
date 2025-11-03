@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
-import { ArrowLeft, ArrowRight, Gift, Mail, RefreshCcw, Search, GanttChartSquare, Star, CircleDollarSign, Pause, Play } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Pause, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import FloatingLogos from './floating-logos';
@@ -13,7 +13,6 @@ const tabsData = [
     id: 1,
     title: "Website build",
     description: "SEO-specialised, conversion-optimised.",
-    icon: GanttChartSquare,
     visual: {
       type: 'image',
       src: '/Ropes_Laptop_Mockup.webp'
@@ -23,7 +22,6 @@ const tabsData = [
     id: 2,
     title: "Design work",
     description: "Menu design, poster design, branding refresh.",
-    icon: Star,
     visual: {
       type: 'image',
       src: '/Printing_Poster_Mockup.webp'
@@ -33,7 +31,6 @@ const tabsData = [
     id: 3,
     title: "Setup assistance",
     description: "Google Business Profile, review optimisation, storefront digital presence.",
-    icon: Search,
     visual: {
       type: 'component',
       component: FloatingLogos
@@ -43,7 +40,6 @@ const tabsData = [
     id: 4,
     title: "Qualification prep",
     description: "Meeting Owner.com’s standards so you can join with confidence.",
-    icon: GanttChartSquare,
     visual: {
       type: 'image',
       src: '/Ropes_Laptop_Mockup.webp'
@@ -53,7 +49,6 @@ const tabsData = [
     id: 5,
     title: "Smooth transition",
     description: "Once eligible, we connect you to Owner.com and waive your setup fee.",
-    icon: CircleDollarSign,
     visual: {
       type: 'image',
       src: '/OwnerCEO_GroupPhoto.webp'
@@ -132,11 +127,11 @@ const CatalogTabs = () => {
           <div className="flex">
             {tabsData.map((tab, index) => (
               <div key={index} className="flex-[0_0_100%] min-w-0">
-                <div className={cn(tab.visual.type === 'image' ? 'bg-background' : 'bg-gradient-to-br from-background/80 to-secondary/30', "rounded-lg p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center")}>
+                <div className="rounded-lg p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
                   {tab.visual.type === 'image' ? (
                     <>
-                      <div className="flex items-center justify-center">
-                        <Image src={tab.visual.src} alt={tab.title} width={600} height={400} className="object-contain" />
+                      <div className="flex items-center justify-center h-[240.5px] md:h-[400px] w-full">
+                        <Image src={tab.visual.src} alt={tab.title} width={600} height={400} className="object-contain h-full w-auto" />
                       </div>
                       <div className="flex flex-col justify-center">
                         <h3 className="text-2xl md:text-3xl font-bold mb-2">{tab.title}</h3>
@@ -145,7 +140,7 @@ const CatalogTabs = () => {
                     </>
                   ) : (
                     <>
-                      <div className="flex items-center justify-center h-[400px] w-full rounded-lg" style={{ backgroundColor: '#0B0B0B' }}>
+                      <div className="flex items-center justify-center h-[240.5px] md:h-[400px] w-full rounded-lg" style={{ backgroundColor: '#0B0B0B' }}>
                         <tab.visual.component onDraggingStateChange={setIsLogoDragging} />
                       </div>
                       <div className="flex flex-col justify-center">

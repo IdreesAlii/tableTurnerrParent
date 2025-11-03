@@ -68,7 +68,7 @@ const PhysicsLogoCloud: React.FC<PhysicsLogoCloudProps> = ({ onDraggingStateChan
     if (!containerRef.current || !isClient) return;
     const { width, height } = containerRef.current.getBoundingClientRect();
     const initialBalls = logos.map((logo, i) => {
-        const radius = 50; // Set a fixed radius for all balls
+        const radius = width < 768 ? 40 : 50; // Set a responsive radius
         return {
           id: i,
           x: radius + Math.random() * (width - radius * 2),

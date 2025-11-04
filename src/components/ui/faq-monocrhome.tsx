@@ -77,7 +77,7 @@ const palettes = {
 };
 
 function FAQ1() {
-  const getRootTheme = () => {
+  const getRootTheme = (): "dark" | "light" => {
     if (typeof document === "undefined") return "dark";
     if (document.documentElement.classList.contains("dark")) return "dark";
     if (document.documentElement.classList.contains("light")) return "light";
@@ -87,7 +87,7 @@ function FAQ1() {
     return "light";
   };
 
-  const [theme, setTheme] = useState(getRootTheme);
+  const [theme, setTheme] = useState<"dark" | "light">(getRootTheme);
   const [introReady, setIntroReady] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [hasEntered, setHasEntered] = useState(false);
@@ -273,7 +273,7 @@ function FAQ1() {
       attributeFilter: ["class", "data-theme"],
     });
 
-    const handleStorage = (event) => {
+    const handleStorage = (event: StorageEvent) => {
       if (event.key === "bento-theme") applyThemeFromRoot();
     };
 
@@ -285,9 +285,10 @@ function FAQ1() {
     };
   }, []);
 
-  const palette = useMemo(() => palettes[theme], [theme]);
+  type Palette = typeof palettes.dark;
+  const palette = useMemo(() => palettes[theme as "dark" | "light"], [theme]);
 
-  const toggleQuestion = (index) => {
+  const toggleQuestion = (index: number) => {
     setActiveIndex(index);
     pauseRotation();
   };
@@ -298,7 +299,7 @@ function FAQ1() {
       return;
     }
 
-    let timeout;
+  let timeout: number | undefined;
     const onLoad = () => {
       timeout = window.setTimeout(() => setHasEntered(true), 120);
     };
@@ -311,19 +312,19 @@ function FAQ1() {
 
     return () => {
       window.removeEventListener("load", onLoad);
-      window.clearTimeout(timeout);
+  window.clearTimeout(timeout);
     };
   }, []);
 
-  const setCardGlow = (event) => {
-    const target = event.currentTarget;
+  const setCardGlow = (event: React.MouseEvent<HTMLElement>) => {
+    const target = event.currentTarget as HTMLElement;
     const rect = target.getBoundingClientRect();
     target.style.setProperty("--faq-x", `${event.clientX - rect.left}px`);
     target.style.setProperty("--faq-y", `${event.clientY - rect.top}px`);
   };
 
-  const clearCardGlow = (event) => {
-    const target = event.currentTarget;
+  const clearCardGlow = (event: React.MouseEvent<HTMLElement>) => {
+    const target = event.currentTarget as HTMLElement;
     target.style.removeProperty("--faq-x");
     target.style.removeProperty("--faq-y");
   };
@@ -363,7 +364,7 @@ function FAQ1() {
                   aria-controls={panelId}
                   aria-expanded={open}
                   onClick={() => toggleQuestion(index)}
-                  style={{ "--faq-outline": theme === "dark" ? "rgba(255,255,255,0.35)" : "rgba(17,17,17,0.25)" }}
+                  style={{ ["--faq-outline" as any]: theme === "dark" ? "rgba(255,255,255,0.35)" : "rgba(17,17,17,0.25)" } as React.CSSProperties}
                   className="relative flex w-full items-start gap-6 px-8 py-7 text-left transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--faq-outline)]"
                 >
                   <div className="flex flex-1 flex-col gap-4">

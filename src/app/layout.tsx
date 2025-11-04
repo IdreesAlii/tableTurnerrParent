@@ -83,7 +83,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
    <html lang="en" suppressHydrationWarning>
       <head>
         {/* LocalBusiness Schema */}
-        <script
+        <Script
+          id="ld-json-localbusiness"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -105,7 +106,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
 
         {/* Website Schema */}
-        <script
+        <Script
+          id="ld-json-website"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({

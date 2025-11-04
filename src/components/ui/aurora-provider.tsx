@@ -2,6 +2,12 @@
 
 import React, { createElement } from 'react';
 
-export const AuroraProvider = ({ children, as = 'div', ...props }) => {
-    return createElement(as, { ...props }, children);
+type AuroraProviderProps = {
+    children?: React.ReactNode;
+    as?: keyof JSX.IntrinsicElements | React.ElementType;
+    [key: string]: any;
+};
+
+export const AuroraProvider = ({ children, as = 'div', ...props }: AuroraProviderProps) => {
+        return createElement(as, { ...props }, children);
 };

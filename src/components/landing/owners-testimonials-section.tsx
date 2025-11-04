@@ -124,7 +124,7 @@ export default function OwnersTestimonialsSection() {
   return (
     <section id="owner-testimonials-section" className="relative py-14 md:py-18 sm:py-18 bg-background overflow-hidden">
              <div className="max-w-2xl mx-auto text-center mb-12 px-4">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline text-white">Tables Owner.com has turned</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary">Tables Owner.com has turned</h2>
           <p className="mt-4 text-lg text-muted-foreground">Some restaurants who grew exponentially after signing up with Owner.</p>
         </div>
       <div className="container px-4">

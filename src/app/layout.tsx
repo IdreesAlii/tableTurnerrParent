@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Toaster } from '@/components/ui/toaster'
 import InitialLoader from '@/components/ui/initial-loader'
+import ThemeProvider from '@/components/theme-provider'
+import ThemeSwitch from '@/components/ui/theme-switch'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tableturnerr.com'),
@@ -77,7 +79,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
+  <html lang="en">
       <head>
         <script
           type="application/ld+json"
@@ -130,8 +132,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
 
       <body className="font-body antialiased">
-        <InitialLoader showOnce={false}>{children}</InitialLoader>
-        <Toaster />
+        <ThemeProvider>
+          <InitialLoader showOnce={false}>{children}</InitialLoader>
+          <Toaster />
+
+          {/* Persistent theme switch fixed bottom-left */}
+          <div className="fixed left-4 bottom-4 z-50">
+            <ThemeSwitch />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -19,14 +19,14 @@ export function HeroSection() {
                     className="w-full h-full object-cover"
                     src="https://ik.imagekit.io/lrigu76hy/tailark/dna-video.mp4?updatedAt=1745736251477"
                 ></video>
-                <div className="absolute inset-0 bg-background/80"></div>
+                <div className="absolute inset-0 bg-background/60 dark:bg-background/80"></div>
             </div>
             <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center items-center px-6 lg:px-12">
                 <div className="mx-auto max-w-2xl  text-center lg:max-w-4xl">
                     <h1 className="max-w-2xl text-balance text-4xl font-headline sm:text-5xl md:text-6xl xl:text-7xl mx-auto">
                         Turn Your Restaurant Into a Brand.
                     </h1>
-                    <p className="mt-8 text-balance text-lg text-muted-foreground">
+                    <p className="mt-8 text-balance text-lg text-primary/85 dark:text-muted-foreground">
                         The big restaurants keep growing — small restaurants stay stuck because they don’t “qualify” for the tools big companies offer. At Tableturnerr, we build your website, your presence, and your brand so you do qualify — then we connect you to Owner.com and waive your setup fee so you can finally scale.
                     </p>
 
@@ -47,7 +47,7 @@ export function HeroSection() {
                             variant="ghost"
                             className="h-12 rounded-full px-5 text-base hover:bg-zinc-950/5 dark:hover:bg-white/5">
                             <button onClick={() => scrollToSection('partner-benefits-section')}>
-                                <span className="text-nowrap">Why Us?</span>
+                                <span className="text-nowrap text-primary/85 dark:text-muted-foreground">Why Us?</span>
                             </button>
                         </Button>
                     </div>
@@ -113,7 +113,7 @@ export const HeroHeader = () => {
                                     <li key={index}>
                                         <button
                                             onClick={() => scrollToSection(item.scroll_to)}
-                                            className="text-muted-foreground hover:text-primary block duration-150">
+                                            className="text-primary/85 dark:text-muted-foreground hover:text-primary block duration-150">
                                             <span>{item.name}</span>
                                         </button>
                                     </li>

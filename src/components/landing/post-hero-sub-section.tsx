@@ -43,20 +43,18 @@ export default function PostHeroSubSection() {
     };
   }, [x, y, width, height]);
 
-  const animatedBackground = useMotionTemplate`radial-gradient(100px circle at ${x}px ${y}px, rgba(255, 255, 255, 0.1), transparent 80%)`;
+  const animatedBackground = useMotionTemplate`radial-gradient(100px circle at ${x}px ${y}px, hsl(var(--primary) / 0.15), transparent 80%)`;
   
   return (
     <div 
       ref={ref}
       className={cn(
-        'px-10 py-16 rounded-none relative flex items-center justify-center w-full overflow-hidden'
+        'px-10 py-16 rounded-none relative flex items-center justify-center w-full overflow-hidden',
+        'bg-background',
+        '[background-image:linear-gradient(hsl(var(--border)_/_1)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)_/_1)_1px,transparent_1px)]',
+        'dark:[background-image:linear-gradient(hsl(var(--border)_/_0.25)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)_/_0.3)_1px,transparent_1px)]'
       )}
       style={{
-        backgroundColor: 'rgb(0, 0, 0)',
-        backgroundImage: `
-          linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
-        `,
         backgroundSize: '20px 20px'
       }}
     >
@@ -68,7 +66,7 @@ export default function PostHeroSubSection() {
         />
 
       <motion.div 
-        className="w-4 h-4 rounded-full absolute shadow-[0_0_20px_2px] shadow-current z-10 bg-white text-white"
+        className="w-4 h-4 rounded-full absolute shadow-[0_0_20px_2px] shadow-primary/50 z-10 bg-primary"
         style={{
           top: y,
           left: x,
@@ -76,14 +74,14 @@ export default function PostHeroSubSection() {
         }}
       />
       <div 
-        className="absolute inset-0 border-y border-white/10"
+        className="absolute inset-0 border-y border-border border-primary/25 dark:border-primary/10"
       />
 
       <div className="container">
         <div className="relative z-20 text-center max-w-3xl mx-auto">
-            <h2 className='font-headline text-3xl md:text-4xl font-bold'>Official Strategic Partner of Owner.com</h2>
+            <h2 className='font-headline text-3xl md:text-4xl font-bold text-foreground'>Official Strategic Partner of Owner.com</h2>
             <p className='text-lg text-muted-foreground mt-4'>Owner.com provides the all-in-one platform to power your restaurant's online presence, from commission-free ordering to marketing automation. {' '}
-                <Link href="#owner-com" className="text-primary underline-offset-4 hover:underline">
+                <Link href="#owner-com" className="text-primary underline-offset-4 hover:underline font-medium">
                     Read more...
                 </Link>
             </p>

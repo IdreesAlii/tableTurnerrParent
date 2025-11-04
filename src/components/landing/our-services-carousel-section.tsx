@@ -98,15 +98,15 @@ const OurServicesCarouselSection = () => {
     <section id="what-we-do-section" className="bg-background">
       <div className="container py-14 md:py-18">
         <div className="max-w-2xl mx-auto text-center mb-12 px-4">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline text-white">Your Partner in Digital Growth</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary">Your Partner in Digital Growth</h2>
           <p className="mt-4 text-lg text-muted-foreground">Our job: Get you ready, then hand you the keys. We build you a stunning, SEO-ready website and create beautiful design work for your restaurant.</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 mb-8">
             {tabsData.map((tab, index) => (
-              <div key={index} onClick={() => handleTabClick(index)} className="cursor-pointer px-4 py-3 relative text-center group">
+              <div key={index} onClick={() => handleTabClick(index)} className="cursor-pointer px-4 py-3 relative text-center group bg-primary/5 rounded-md hover:bg-primary/10 dark:bg-transparent dark:hover:bg-transparent transition-colors">
                 <div className="flex items-center justify-center gap-2">
-                  <p className={cn("text-sm font-semibold transition-colors", activeIndex === index ? "text-primary" : "text-muted-foreground group-hover:text-primary/80")}>
+                  <p className={cn("text-sm font-medium transition-colors", activeIndex === index ? "text-primary" : "text-muted-foreground group-hover:text-primary/80")}>
                     <span className={cn("transition-opacity", activeIndex === index ? "opacity-50" : "opacity-50 group-hover:opacity-80")}>{index + 1}</span>
                     <span className="ml-2">{tab.title}</span>
                   </p>
@@ -142,7 +142,7 @@ const OurServicesCarouselSection = () => {
                     </>
                   ) : (
                     <>
-                      <div className="relative w-full rounded-lg" style={{ paddingTop: '66.66%', backgroundColor: '#0B0B0B' }}>
+                      <div className="relative w-full rounded-lg bg-[#0B0B0B]/15 dark:bg-[#0B0B0B]" style={{ paddingTop: '66.66%' }}>
                         <div className="absolute top-0 left-0 w-full h-full">
                             {React.createElement(tab.visual.component as any, { onDraggingStateChange: setIsLogoDragging })}
                         </div>

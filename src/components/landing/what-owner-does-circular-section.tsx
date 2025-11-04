@@ -1,6 +1,7 @@
 'use client';
 import { Globe, ShoppingCart, Truck, Megaphone, Smartphone, Award } from 'lucide-react';
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
+import FAQ1 from "@/components/ui/faq-monocrhome";
 
 const timelineData = [
   {
@@ -55,13 +56,16 @@ const timelineData = [
 
 export default function WhatOwnerDoesCircularSection() {
   return (
-    <section className="py-20 px-4 text-center">
+    <section className="py-14 md:py-18 sm:py-18 px-4 text-center">
       <h2 className="text-4xl font-bold mb-4">What Owner.com Does For You</h2>
       <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
         Owner.com provides a suite of tools to help you manage and grow your restaurant, all integrated into one powerful platform.
       </p>
-      <div className="h-[500px] w-full">
+      <div className="hidden h-[fit-content] w-full md:block mt-[-60px] mb-[-70px]">
          <RadialOrbitalTimeline timelineData={timelineData} />
+      </div>
+      <div className="block md:hidden">
+        <FAQ1 />
       </div>
     </section>
   );

@@ -47,7 +47,7 @@ export default function TestimonialsCarouselSection() {
   return (
     <section className={cn(
       "bg-background text-foreground",
-      "py-12 sm:py-24 md:py-32 px-0",
+      "py-14 md:py-18 sm:py-18 px-0",
     )}>
       <div className="container">
         <div className="mx-auto flex max-w-container flex-col items-center gap-4 text-center sm:gap-16">

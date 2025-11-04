@@ -20,7 +20,7 @@ const qualifications = {
 
 export default function QualificationCriteriaSection() {
   return (
-    <section id="qualification" className="py-20 md:py-24 bg-background">
+    <section id="qualification" className="py-14 md:py-18 sm:py-18 bg-background">
       <div className="container px-4">
         <div className="text-center max-w-2xl mx-auto">
           <p className="font-headline text-sm font-semibold uppercase text-primary tracking-widest">Are You A Good Fit?</p>

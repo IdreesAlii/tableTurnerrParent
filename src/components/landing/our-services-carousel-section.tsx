@@ -130,9 +130,28 @@ const OurServicesCarouselSection = () => {
                 <div className="rounded-lg p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
                   {tab.visual.type === 'image' ? (
                     <>
-                      <div className="relative w-full" style={{ paddingTop: '66.66%' }}>
+                      <div className="relative w-full bg-[#0B0B0B]/15 dark:bg-[#0B0B0B]" style={{ paddingTop: '66.66%' }}>
                         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                            <Image src={tab.visual.src as string} alt={tab.title} fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+                            {(tab.visual.src as string) === '/Printing_Poster_Mockup.webp' ? (
+                              <>
+                                <Image
+                                  src="/Printing_Poster_Mockup.webp"
+                                  alt={`${tab.title} (Light)`}
+                                  fill
+                                  className="object-cover dark:hidden"
+                                  sizes="(min-width: 768px) 50vw, 100vw"
+                                />
+                                <Image
+                                  src="/Printing_Poster_Mockup_Dark.webp"
+                                  alt={`${tab.title} (Dark)`}
+                                  fill
+                                  className="object-cover hidden dark:block"
+                                  sizes="(min-width: 768px) 50vw, 100vw"
+                                />
+                              </>
+                            ) : (
+                              <Image src={tab.visual.src as string} alt={tab.title} fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+                            )}
                         </div>
                       </div>
                       <div className="flex flex-col justify-center">

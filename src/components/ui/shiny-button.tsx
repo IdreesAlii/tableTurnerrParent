@@ -44,6 +44,8 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
           --shiny-cta-fg: #ffffff;
           --shiny-cta-highlight: blue;
           --shiny-cta-highlight-subtle: #8484ff;
+          /* Ensure base shine is subtle (the default registered value is white) */
+          --gradient-shine: rgba(255, 255, 255, 0.18);
           --animation: gradient-angle linear infinite;
           --duration: 3s;
           --shadow-size: 2px;
@@ -75,6 +77,8 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
           transition: var(--transition);
           transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
         }
+
+        /* No theme-based overrides: keep the same (dark) styling in all modes */
 
         .shiny-cta::before,
         .shiny-cta::after,

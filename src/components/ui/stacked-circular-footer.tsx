@@ -21,9 +21,11 @@ function StackedCircularFooter() {
             </ul>
           </div>
           <div className="mb-8 flex space-x-4">
+            <Link href="https://www.instagram.com/tableturnerr/">
             <Button variant="outline" className="rounded-full">
               <span className="text-sm text-muted-foreground">Instagram</span>
             </Button>
+            </Link>
             <Button variant="outline" className="rounded-full">
               <span className="text-sm text-muted-foreground">LinkedIn</span>
             </Button>

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Tick } from '@/components/icons/tick';
 import { Cross } from '@/components/icons/cross';
+import Link from 'next/link';
 import { ShinyButton } from "@/components/ui/shiny-button";
 
 const qualifications = {
@@ -70,7 +70,10 @@ export default function QualificationCriteriaSection() {
         </div>
         <div className="mt-12 text-center items-center flex flex-col">
             <p className="text-lg text-muted-foreground max-w-2xl"><span className='font-bold'>In Short</span>, We make you big and perfect enough to fit under Tableturnerr's Qualification then we get you FREE onboarding (its $970 without us)</p>
-            <ShinyButton className="mt-4">Let's Talk</ShinyButton>
+            <Link href="https://appt.link/Tableturnerr/Free-Demo">
+            <ShinyButton className="mt-4" >Let's Talk</ShinyButton>
+            </Link>
+
         </div>
       </div>
     </section>

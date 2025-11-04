@@ -132,7 +132,7 @@ export const HeroHeader = () => {
                                 asChild
                                 variant="outline"
                                 size="sm">
-                                <Link href="#">
+                                <Link href="https://appt.link/Tableturnerr/Free-Demo">
                                     <span>Let's Talk</span>
                                 </Link>
                             </Button>

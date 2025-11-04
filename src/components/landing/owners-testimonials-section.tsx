@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 import { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { Play } from 'lucide-react';
+import { Play, X } from 'lucide-react';
 
 interface Testimonial {
   id: number;
@@ -117,10 +117,15 @@ export default function OwnersTestimonialsSection() {
     [emblaApi]
   );
 
-  const handleVideoClick = (testimonialId: number, videoUrl: string) => {
+  const handleVideoClick = (testimonialId: number) => {
     setIsPlaying(testimonialId);
-    // You can implement video modal here
   };
+
+  const handleCloseModal = () => {
+    setIsPlaying(null);
+  };
+
+  const videoToPlay = isPlaying ? testimonials.find(t => t.id === isPlaying) : null;
 
   return (
     <section id="design-work" className="relative py-14 md:py-18 sm:py-18 bg-background overflow-hidden">
@@ -152,7 +157,7 @@ export default function OwnersTestimonialsSection() {
                         {/* Video Section - Left Side */}
                         <div className="md:w-52 lg:w-56 flex-shrink-0">
                           <div
-                            onClick={() => handleVideoClick(testimonial.id, testimonial.videoUrl)}
+                            onClick={() => handleVideoClick(testimonial.id)}
                             className="relative group cursor-pointer h-72 md:h-full"
                           >
                             <img
@@ -243,6 +248,34 @@ export default function OwnersTestimonialsSection() {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {videoToPlay && (
+        <div 
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 animate-in fade-in"
+          onClick={handleCloseModal}
+        >
+          <div 
+            className="relative w-full max-w-4xl animate-in fade-in zoom-in-90"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={handleCloseModal}
+              className="absolute -top-2 -right-2 md:-top-4 md:-right-4 w-8 h-8 rounded-full bg-white text-black flex items-center justify-center text-xl z-10 shadow-lg"
+              aria-label="Close video player"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <video
+                className="w-full h-full rounded-lg overflow-hidden"
+                src={videoToPlay.videoUrl}
+                controls
+                autoPlay
+                playsInline
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -58,10 +58,10 @@ export function HeroSection() {
 }
 
 const menuItems = [
-    { name: 'What We Do', href: '#what-we-do' },
-    { name: 'Our Work', href: '#design-work' },
-    { name: 'About', href: '#about' },
-    { name: 'Qualify', href: '#qualification' },
+    { name: 'What We Do', id: 'header-nav-what-we-do', href: '#what-we-do' },
+    { name: 'Our Work', id: 'header-nav-our-work', href: '#design-work' },
+    { name: 'About', id: 'header-nav-about', href: '#about' },
+    { name: 'Qualify', id: 'header-nav-qualify', href: '#qualification' },
 ]
 
 export const HeroHeader = () => {

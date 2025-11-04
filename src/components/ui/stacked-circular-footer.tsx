@@ -26,9 +26,11 @@ function StackedCircularFooter() {
               <span className="text-sm text-muted-foreground">Instagram</span>
             </Button>
             </Link>
+            <Link href="https://www.linkedin.com/company/tableturnerr">
             <Button variant="outline" className="rounded-full">
               <span className="text-sm text-muted-foreground">LinkedIn</span>
             </Button>
+            </Link>
           </div>
           <div className="w-full py-5 border-t-[1px] border-muted-foreground/10">
             <p className="text-sm text-muted-foreground text-center">

@@ -81,7 +81,7 @@ export default function PostHeroSubSection() {
         <div className="relative z-20 text-center max-w-3xl mx-auto">
             <h2 className='font-headline text-3xl md:text-4xl font-bold text-foreground'>Official Strategic Partner of Owner.com</h2>
             <p className='text-lg text-muted-foreground mt-4'>Owner.com provides the all-in-one platform to power your restaurant's online presence, from commission-free ordering to marketing automation. {' '}
-                <Link href="#owner-com" className="text-primary underline-offset-4 hover:underline font-medium">
+                <Link href="#owner-com" className="text-primary underline-animate font-medium">
                     Read more...
                 </Link>
             </p>

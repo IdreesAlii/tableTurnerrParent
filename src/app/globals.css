@@ -171,3 +171,27 @@
     color: transparent;
     animation: aurora 8s ease-in-out infinite alternate;
 }
+
+@layer components {
+  /* Animated underline: left-to-right using current text color */
+  .underline-animate {
+    position: relative;
+    display: inline-block;
+  }
+  .underline-animate::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 1px;
+    width: 0;
+    background: currentColor;
+    opacity: 0.7;
+    border-radius: 2px;
+    transition: width 260ms cubic-bezier(.2,.8,.2,1);
+  }
+  .underline-animate:hover::after,
+  .underline-animate:focus::after {
+    width: 100%;
+  }
+}

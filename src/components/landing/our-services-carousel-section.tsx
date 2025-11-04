@@ -127,10 +127,10 @@ const OurServicesCarouselSection = () => {
           <div className="flex">
             {tabsData.map((tab, index) => (
               <div key={index} className="flex-[0_0_100%] min-w-0">
-                <div className="rounded-lg p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
+                <div className="rounded-lg p-2 md:p-2 grid md:grid-cols-2 gap-8 items-center">
                   {tab.visual.type === 'image' ? (
                     <>
-                      <div className="relative w-full bg-[#0B0B0B]/15 dark:bg-[#0B0B0B]" style={{ paddingTop: '66.66%' }}>
+                      <div className="relative w-full rounded-lg overflow-hidden bg-[#0B0B0B]/15 dark:bg-[#0B0B0B] border border-muted-foreground/10 dark:border-muted-foreground/10" style={{ paddingTop: '66.66%' }}>
                         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
                             {(tab.visual.src as string) === '/Printing_Poster_Mockup.webp' ? (
                               <>
@@ -161,7 +161,7 @@ const OurServicesCarouselSection = () => {
                     </>
                   ) : (
                     <>
-                      <div className="relative w-full rounded-lg bg-[#0B0B0B]/15 dark:bg-[#0B0B0B]" style={{ paddingTop: '66.66%' }}>
+                      <div className="relative w-full rounded-lg overflow-hidden bg-[#0B0B0B]/15 dark:bg-[#0B0B0B] border border-muted-foreground/10 dark:border-muted-foreground/10" style={{ paddingTop: '66.66%' }}>
                         <div className="absolute top-0 left-0 w-full h-full">
                             {React.createElement(tab.visual.component as any, { onDraggingStateChange: setIsLogoDragging })}
                         </div>

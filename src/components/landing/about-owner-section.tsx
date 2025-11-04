@@ -19,11 +19,11 @@ export default function AboutOwnerSection() {
           <p className="font-headline text-sm font-semibold uppercase text-primary tracking-widest">About Owner.com</p>
           <h2 className="font-headline text-3xl md:text-4xl font-bold mt-4">When you’re ready, plug into the full Owner.com system.</h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            Owner.com is a leading digital platform for restaurants, valued at $1 billion after a recent $120 million Series C funding round (<a className='underline font-medium text-white/90' href='https://www.bloomberg.com/news/articles/2025-05-13/restaurant-tech-startup-owner-com-hits-1-billion-valuation'>Bloomberg</a>). As a restaurant owner, you compete daily with large chains that have spent millions of dollars building their websites, loyalty apps and marketing funnels. Owner.com levels that field.
+            Owner.com is a leading digital platform for restaurants, valued at $1 billion after a recent $120 million Series C funding round (<a className='underline-animate font-medium text-white/90' href='https://www.bloomberg.com/news/articles/2025-05-13/restaurant-tech-startup-owner-com-hits-1-billion-valuation'>Bloomberg</a>). As a restaurant owner, you compete daily with large chains that have spent millions of dollars building their websites, loyalty apps and marketing funnels. Owner.com levels that field.
           </p>
 
-          <div id='partner-benefits-section' className="mt-8 bg-muted/20 p-6 rounded-lg border border-border/50">
-            <h3 className="text-xl font-bold text-white mb-4">Partner Benefit for You (via Tableturnerr)</h3>
+          <div id='partner-benefits-section' className="mt-8 bg-muted dark:bg-muted/20 p-6 rounded-lg border border-border dark:border-border/50">
+            <h3 className="text-xl font-bold text-primary mb-4">Partner Benefit for You (via Tableturnerr)</h3>
             <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start">
                     <Star className="h-5 w-5 text-yellow-400 mr-3 mt-1 flex-shrink-0" />

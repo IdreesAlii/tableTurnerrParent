@@ -34,7 +34,7 @@ export function HeroSection() {
                         <Button
                             asChild
                             size="lg"
-                            className="h-12 rounded-full pl-5 pr-3 text-base">
+                            className="h-12 rounded-full pl-5 pr-3 text-base dark:hover:bg-primary/90 dark:hover:text-black">
                             <Link target="_blank" href="https://appt.link/Tableturnerr/Free-Demo">
                                 <span className="text-nowrap">Get Started Now</span>
                                 <ChevronRight className="ml-1" />
@@ -88,7 +88,7 @@ export const HeroHeader = () => {
     return (
         <header data-state={menuState ? 'active' : 'inactive'} className="group fixed z-50 w-full px-4 pt-2">
             <nav
-                className={cn('mx-auto max-w-7xl rounded-3xl px-6 transition-all duration-300 lg:px-12', scrolled && 'bg-background/50 backdrop-blur-2xl')}>
+                className={cn('mx-auto max-w-7xl rounded-3xl px-6 transition-all duration-300 lg:px-12', scrolled && 'bg-background/50 backdrop-blur-2xl shadow-md shadow-zinc-300/25 dark:shadow-none')}>
                 <div
                     className={cn('relative flex flex-wrap items-center justify-between gap-6 py-3 duration-200 lg:gap-0 lg:py-6', scrolled && 'lg:py-4')}>
                     <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
@@ -113,8 +113,8 @@ export const HeroHeader = () => {
                                     <li key={index}>
                                         <button
                                             onClick={() => scrollToSection(item.scroll_to)}
-                                            className="text-primary/85 dark:text-muted-foreground hover:text-primary block duration-150">
-                                            <span>{item.name}</span>
+                                            className="text-primary/85 dark:text-muted-foreground hover:text-primary dark:hover:text-primary block duration-150">
+                                            <span className="underline-animate">{item.name}</span>
                                         </button>
                                     </li>
                                 ))}
@@ -129,8 +129,8 @@ export const HeroHeader = () => {
                                     <li key={index}>
                                         <button
                                             onClick={() => scrollToSection(item.scroll_to)}
-                                            className="text-muted-foreground hover:text-primary block duration-150">
-                                            <span>{item.name}</span>
+                                            className="text-muted-foreground hover:text-primary dark:hover:text-primary block duration-150">
+                                            <span className="underline-animate">{item.name}</span>
                                         </button>
                                     </li>
                                 ))}
@@ -145,7 +145,7 @@ export const HeroHeader = () => {
                                     <span>Let's Talk</span>
                                 </Link>
                             </Button>
-                            <Button
+                            <Button className='dark:hover:bg-primary/90 dark:hover:text-black'
                                 asChild
                                 size="sm">
                                 <Link target="_blank" href="https://appt.link/Tableturnerr/Free-Demo">
@@ -159,5 +159,3 @@ export const HeroHeader = () => {
         </header>
     )
 }
-
-// logo moved to shared component at src/components/ui/logo.tsx

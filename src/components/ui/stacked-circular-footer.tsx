@@ -1,6 +1,15 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import { Logo } from '@/components/ui/logo'
+
+const scrollToSection = (section_name: string) => {
+    document.getElementById(section_name)?.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
 
 function StackedCircularFooter() {
   return (
@@ -14,10 +23,10 @@ function StackedCircularFooter() {
           </div>
           <div id="navigation">
             <ul className="mb-8 flex flex-wrap justify-center gap-6">
-              <li><Link href="#what-we-do" className="text-sm text-muted-foreground hover:text-primary">What We Do</Link></li>
-              <li><Link href="#design-work" className="text-sm text-muted-foreground hover:text-primary">Design Work</Link></li>
-              <li><Link href="#about" className="text-sm text-muted-foreground hover:text-primary">About</Link></li>
-              <li><Link href="#qualification" className="text-sm text-muted-foreground hover:text-primary">Qualification</Link></li>
+              <li><button onClick={() => scrollToSection("what-we-do-section")} className="text-sm text-muted-foreground hover:text-primary">What We Do</button></li>
+              <li><button onClick={() => scrollToSection("partner-benefits-section")} className="text-sm text-muted-foreground hover:text-primary">Why Us?</button></li>
+              <li><button onClick={() => scrollToSection("owner-testimonials-section")} className="text-sm text-muted-foreground hover:text-primary">Owner Case Study</button></li>
+              <li><button onClick={() => scrollToSection("qualification-section")} className="text-sm text-muted-foreground hover:text-primary">Qualification</button></li>
             </ul>
           </div>
           <div className="mb-8 flex space-x-4">

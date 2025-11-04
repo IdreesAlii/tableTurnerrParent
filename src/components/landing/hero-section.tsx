@@ -1,4 +1,4 @@
- 'use client'
+'use client'
 import React from 'react'
 import Link from 'next/link'
 import { Logo } from '@/components/ui/logo'
@@ -35,7 +35,7 @@ export function HeroSection() {
                             asChild
                             size="lg"
                             className="h-12 rounded-full pl-5 pr-3 text-base">
-                            <Link href="#qualification">
+                            <Link target="_blank" href="https://appt.link/Tableturnerr/Free-Demo">
                                 <span className="text-nowrap">Get Started Now</span>
                                 <ChevronRight className="ml-1" />
                             </Link>
@@ -46,9 +46,9 @@ export function HeroSection() {
                             size="lg"
                             variant="ghost"
                             className="h-12 rounded-full px-5 text-base hover:bg-zinc-950/5 dark:hover:bg-white/5">
-                            <Link href="#design-work">
-                                <span className="text-nowrap">See Our Work</span>
-                            </Link>
+                            <button onClick={() => scrollToSection('partner-benefits-section')}>
+                                <span className="text-nowrap">Why Us?</span>
+                            </button>
                         </Button>
                     </div>
                 </div>
@@ -57,11 +57,19 @@ export function HeroSection() {
     )
 }
 
+const scrollToSection = (section_name: string) => {
+    document.getElementById(section_name)?.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+
 const menuItems = [
-    { name: 'What We Do', id: 'header-nav-what-we-do', href: '#what-we-do' },
-    { name: 'Our Work', id: 'header-nav-our-work', href: '#design-work' },
-    { name: 'About', id: 'header-nav-about', href: '#about' },
-    { name: 'Qualify', id: 'header-nav-qualify', href: '#qualification' },
+    { name: 'What We Do', scroll_to: 'what-we-do-section' },
+    { name: 'Why Us?', scroll_to: 'partner-benefits-section' },
+    { name: 'Owner Case Study', scroll_to: 'owner-testimonials-section' },
+    { name: 'Qualify', scroll_to: 'qualification-section' },
 ]
 
 export const HeroHeader = () => {
@@ -75,6 +83,7 @@ export const HeroHeader = () => {
         })
         return () => unsubscribe()
     }, [scrollYProgress])
+
 
     return (
         <header data-state={menuState ? 'active' : 'inactive'} className="group fixed z-50 w-full px-4 pt-2">
@@ -102,11 +111,11 @@ export const HeroHeader = () => {
                             <ul className="flex gap-8 text-sm">
                                 {menuItems.map((item, index) => (
                                     <li key={index}>
-                                        <Link
-                                            href={item.href}
+                                        <button
+                                            onClick={() => scrollToSection(item.scroll_to)}
                                             className="text-muted-foreground hover:text-primary block duration-150">
                                             <span>{item.name}</span>
-                                        </Link>
+                                        </button>
                                     </li>
                                 ))}
                             </ul>
@@ -118,11 +127,11 @@ export const HeroHeader = () => {
                             <ul className="space-y-6 text-base">
                                 {menuItems.map((item, index) => (
                                     <li key={index}>
-                                        <Link
-                                            href={item.href}
+                                        <button
+                                            onClick={() => scrollToSection(item.scroll_to)}
                                             className="text-muted-foreground hover:text-primary block duration-150">
                                             <span>{item.name}</span>
-                                        </Link>
+                                        </button>
                                     </li>
                                 ))}
                             </ul>
@@ -132,15 +141,15 @@ export const HeroHeader = () => {
                                 asChild
                                 variant="outline"
                                 size="sm">
-                                <Link href="https://appt.link/Tableturnerr/Free-Demo">
+                                <Link target="_blank" href="https://appt.link/Tableturnerr/Free-Demo">
                                     <span>Let's Talk</span>
                                 </Link>
                             </Button>
                             <Button
                                 asChild
                                 size="sm">
-                                <Link href="#qualification">
-                                    <span>Get Started</span>
+                                <Link target="_blank" href="https://appt.link/Tableturnerr/Free-Demo">
+                                    <span>Ready For Owner</span>
                                 </Link>
                             </Button>
                         </div>

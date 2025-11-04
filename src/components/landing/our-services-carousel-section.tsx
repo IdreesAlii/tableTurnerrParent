@@ -95,7 +95,7 @@ const OurServicesCarouselSection = () => {
   };
   
   return (
-    <section id="what-we-do" className="bg-background">
+    <section id="what-we-do-section" className="bg-background">
       <div className="container py-14 md:py-18">
         <div className="max-w-2xl mx-auto text-center mb-12 px-4">
           <h2 className="text-3xl md:text-4xl font-bold font-headline text-white">Your Partner in Digital Growth</h2>

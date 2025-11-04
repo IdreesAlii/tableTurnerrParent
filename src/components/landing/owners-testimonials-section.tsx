@@ -18,7 +18,6 @@ interface Testimonial {
     value: string;
     label: string;
   }[];
-  caseStudyUrl: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -33,7 +32,6 @@ const testimonials: Testimonial[] = [
       { value: "+$150,000", label: "Online sales" },
       { value: "+377%", label: "Growth" }
     ],
-    caseStudyUrl: "/case-studies/samos-oaxaca"
   },
   {
     id: 2,
@@ -46,7 +44,6 @@ const testimonials: Testimonial[] = [
       { value: "+$4,500,000", label: "Online sales" },
       { value: "+4", label: "Locations" }
     ],
-    caseStudyUrl: "/case-studies/saffron"
   },
   {
     id: 3,
@@ -59,7 +56,6 @@ const testimonials: Testimonial[] = [
       { value: "+$300,000", label: "Online sales" },
       { value: "$100,000", label: "Delivery fees saved" }
     ],
-    caseStudyUrl: "/case-studies/aburaya"
   },
   {
     id: 4,
@@ -72,7 +68,6 @@ const testimonials: Testimonial[] = [
       { value: "25%", label: "increase in online orders" },
       { value: "5-figure", label: "savings in third-party fees" }
     ],
-    caseStudyUrl: "/case-studies/hillcrust-pizza"
   },
   {
     id: 5,
@@ -85,7 +80,6 @@ const testimonials: Testimonial[] = [
       { value: "$9k", label: "sales in first month" },
       { value: "60%", label: "growth year-over-year" }
     ],
-    caseStudyUrl: "/case-studies/san-diego-kabob-shack"
   }
 ];
 
@@ -128,7 +122,7 @@ export default function OwnersTestimonialsSection() {
   const videoToPlay = isPlaying ? testimonials.find(t => t.id === isPlaying) : null;
 
   return (
-    <section id="design-work" className="relative py-14 md:py-18 sm:py-18 bg-background overflow-hidden">
+    <section id="owner-testimonials-section" className="relative py-14 md:py-18 sm:py-18 bg-background overflow-hidden">
              <div className="max-w-2xl mx-auto text-center mb-12 px-4">
           <h2 className="text-3xl md:text-4xl font-bold font-headline text-white">Tables Owner.com has turned</h2>
           <p className="mt-4 text-lg text-muted-foreground">Some restaurants who grew exponentially after signing up with Owner.</p>
@@ -155,10 +149,10 @@ export default function OwnersTestimonialsSection() {
                     >
                       <div className="flex flex-col md:flex-row gap-0">
                         {/* Video Section - Left Side */}
-                        <div className="md:w-52 lg:w-56 flex-shrink-0">
+                        <div className="md:w-52 lg:w-56 flex-shrink-0 h-72">
                           <div
                             onClick={() => handleVideoClick(testimonial.id)}
-                            className="relative group cursor-pointer h-72 md:h-full"
+                            className="relative group cursor-pointer h-full md:h-full"
                           >
                             <img
                               src={testimonial.thumbnailUrl}
@@ -209,12 +203,6 @@ export default function OwnersTestimonialsSection() {
                                 </div>
                                 ))}
                             </div>
-                            <a
-                                href={testimonial.caseStudyUrl}
-                                className="bg-secondary hover:bg-secondary/80 text-secondary-foreground px-5 py-2.5 rounded-md text-base font-medium transition-colors whitespace-nowrap"
-                            >
-                                See {testimonial.name.split(' ')[0]}'s story
-                            </a>
                            </div>
                         </div>
                       </div>

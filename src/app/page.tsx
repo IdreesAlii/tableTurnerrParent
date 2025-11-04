@@ -3,7 +3,6 @@ import OurServicesCarouselSection from '@/components/landing/our-services-carous
 import OwnersTestimonialsSection from '@/components/landing/owners-testimonials-section';
 import AboutOwnerSection from '@/components/landing/about-owner-section';
 import QualificationCriteriaSection from '@/components/landing/qualification-criteria-section';
-import FooterSection from '@/components/landing/footer-section';
 import { StackedCircularFooter } from '@/components/ui/stacked-circular-footer';
 import { HeroSection, HeroHeader } from '@/components/landing/hero-section';
 import PostHeroSubSection from '@/components/landing/post-hero-sub-section';

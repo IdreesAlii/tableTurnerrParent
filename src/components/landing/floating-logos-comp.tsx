@@ -44,11 +44,11 @@ interface Ball {
   bgColor: string;
 }
 
-interface PhysicsLogoCloudProps {
+interface FloatingLogosCompProps {
   onDraggingStateChange: (isDragging: boolean) => void;
 }
 
-const PhysicsLogoCloud: React.FC<PhysicsLogoCloudProps> = ({ onDraggingStateChange }) => {
+const FloatingLogosComp: React.FC<FloatingLogosCompProps> = ({ onDraggingStateChange }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const ballsRef = useRef<Ball[]>([]);
   const animationFrameId = useRef<number>();
@@ -279,4 +279,4 @@ const PhysicsLogoCloud: React.FC<PhysicsLogoCloudProps> = ({ onDraggingStateChan
   );
 };
 
-export default PhysicsLogoCloud;
+export default FloatingLogosComp;

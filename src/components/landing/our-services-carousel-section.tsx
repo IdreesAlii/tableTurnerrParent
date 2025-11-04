@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { ArrowLeft, ArrowRight, Pause, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import FloatingLogos from './floating-logos';
+import FloatingLogosComp from './floating-logos-comp';
 
 const tabsData = [
   {
@@ -33,7 +33,7 @@ const tabsData = [
     description: "Google Business Profile, review optimisation, storefront digital presence.",
     visual: {
       type: 'component',
-      component: FloatingLogos
+      component: FloatingLogosComp
     }
   },
   {
@@ -42,7 +42,7 @@ const tabsData = [
     description: "Meeting Owner.com’s standards so you can join with confidence.",
     visual: {
       type: 'image',
-      src: '/Ropes_Laptop_Mockup.webp'
+      src: '/Qualifications_Screenshot.png'
     }
   },
   {
@@ -56,7 +56,7 @@ const tabsData = [
   },
 ];
 
-const CatalogTabs = () => {
+const OurServicesCarouselSection = () => {
   const [isLogoDragging, setIsLogoDragging] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, skipSnaps: false, watchDrag: !isLogoDragging });
   const [activeIndex, setActiveIndex] = useState(0);
@@ -96,7 +96,7 @@ const CatalogTabs = () => {
   
   return (
     <section className="bg-background">
-      <div className="container py-20 md:py-24">
+      <div className="container py-14 md:py-18">
         <div className="max-w-2xl mx-auto text-center mb-12 px-4">
           <h2 className="text-3xl md:text-4xl font-bold font-headline text-white">Your Partner in Digital Growth</h2>
           <p className="mt-4 text-lg text-muted-foreground">Our job: Get you ready, then hand you the keys. We build you a stunning, SEO-ready website and create beautiful design work for your restaurant.</p>
@@ -177,4 +177,4 @@ const CatalogTabs = () => {
   );
 };
 
-export default CatalogTabs;
+export default OurServicesCarouselSection;

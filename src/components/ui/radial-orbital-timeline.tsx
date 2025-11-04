@@ -73,7 +73,7 @@ export default function RadialOrbitalTimeline({
         : -1;
       const nextIndex = (currentIndex + 1) % timelineData.length;
       showItem(timelineData[nextIndex].id);
-    }, activeNodeId === null ? 0 : 1700);
+    }, activeNodeId === null ? 0 : 2355);
 
     return () => clearTimeout(timer);
   }, [autoRotate, activeNodeId, timelineData, hasMounted]);

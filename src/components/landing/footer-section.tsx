@@ -8,7 +8,7 @@ const Logo = () => (
   </Link>
 );
 
-export default function Footer() {
+export default function FooterSection() {
   return (
     <footer className="border-t bg-background">
       <div className="container px-4 py-12">

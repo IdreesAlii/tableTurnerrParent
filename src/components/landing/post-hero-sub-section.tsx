@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useMotionValue, useMotionTemplate, animate, motion } from "framer-motion";
 import useMeasure from "react-use-measure";
 
-export default function OwnerPartnershipBanner() {
+export default function PostHeroSubSection() {
   let [ref, { width, height }] = useMeasure();
   const x = useMotionValue(0);
   const y = useMotionValue(0);

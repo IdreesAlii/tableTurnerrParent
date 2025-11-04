@@ -20,8 +20,8 @@ export function HeroSection() {
                 ></video>
                 <div className="absolute inset-0 bg-background/80"></div>
             </div>
-            <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-6 lg:px-12">
-                <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
+            <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center items-center px-6 lg:px-12">
+                <div className="mx-auto max-w-2xl  text-center lg:max-w-4xl">
                     <h1 className="max-w-2xl text-balance text-4xl font-headline sm:text-5xl md:text-6xl xl:text-7xl mx-auto">
                         Turn Your Restaurant Into a Brand.
                     </h1>

@@ -69,11 +69,12 @@ export default function QualificationCriteriaSection() {
           </Card>
         </div>
         <div className="mt-12 text-center items-center flex flex-col">
-            <p className="text-lg text-muted-foreground max-w-2xl"><span className='font-bold'>In Short</span>, We make you big and perfect enough to fit under Tableturnerr's Qualification then we get you FREE onboarding (its $970 without us)</p>
+          <p className="text-lg text-muted-foreground max-w-2xl"><span className='font-bold'>In Short</span>, We make you big and perfect enough to fit under Tableturnerr's Qualification then we get you FREE onboarding (its $970 without us)</p>
+          <div className='mt-4 m-0 inline-block w-fit bg-primary dark:bg-transparent rounded-[360px]'>
             <Link href="https://appt.link/Tableturnerr/Free-Demo">
-            <ShinyButton className="mt-4" >Let's Talk</ShinyButton>
+              <ShinyButton >Let's Talk</ShinyButton>
             </Link>
-
+          </div>
         </div>
       </div>
     </section>

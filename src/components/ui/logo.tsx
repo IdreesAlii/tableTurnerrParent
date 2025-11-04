@@ -7,7 +7,7 @@ export const Logo = (props: React.SVGProps<SVGSVGElement>) => (
     height="38"
     viewBox="0 0 43 38"
     fill="none"
-    className="w-auto h-7 text-foreground"
+    className="w-auto h-7 text-primary"
     {...props}
   >
     <path

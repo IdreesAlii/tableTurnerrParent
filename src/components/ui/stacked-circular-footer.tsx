@@ -13,10 +13,10 @@ const scrollToSection = (section_name: string) => {
 
 function StackedCircularFooter() {
   return (
-    <footer className="bg-background pt-12 border-t-[1px] border-muted-foreground/10">
+    <footer className="bg-background pt-12 border-t-[1px] dark:border-muted-foreground/10 border-muted-foreground/20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center">
-          <div className="mb-8 rounded-full bg-[#080808] p-8">
+          <div className="mb-8 rounded-full bg-[#0B0B0B]/5 dark:bg-[#0B0B0B] p-8">
             <Link href="/" className="font-headline text-2xl font-bold">
               <Logo />
             </Link>
@@ -41,7 +41,7 @@ function StackedCircularFooter() {
             </Button>
             </Link>
           </div>
-          <div className="w-full py-5 border-t-[1px] border-muted-foreground/10">
+          <div className="w-full py-5 border-t-[1px] border-muted-foreground/20 dark:border-muted-foreground/10">
             <p className="text-sm text-muted-foreground text-center">
               © 2024 TableTurnerr, All rights reserved.
             </p>

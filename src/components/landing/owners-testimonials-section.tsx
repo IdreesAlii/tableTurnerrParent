@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Play } from 'lucide-react';
@@ -51,7 +52,7 @@ const testimonials: Testimonial[] = [
     id: 3,
     name: "Hiroyuki Aidichi",
     business: "Owner of Aburaya Fried Chicken",
-    quote: "The best part is your customer service. It's so quick and friendly; it just made my life easier. If somebody asks me, I recommend Owner.",
+    quote: "The best part is your customer service. It\'s so quick and friendly; it just made my life easier. If somebody asks me, I recommend Owner.",
     videoUrl: "https://player.vimeo.com/progressive_redirect/playback/932909598/rendition/1080p/file.mp4?loc=external&signature=918937f76f6c9a7dcbea86cdeac8ec11184f1fc519bf782f7250b9a14e66f909",
     thumbnailUrl: "https://cdn.prod.website-files.com/666eec3edcc552b5eecc7fcd/668e8d53453d0329f6c20a21_aburaya.jpg",
     metrics: [
@@ -93,7 +94,7 @@ export default function OwnersTestimonialsSection() {
     loop: true,
     align: 'center',
     skipSnaps: false,
-  });
+  }, [Autoplay({ delay: 4000, stopOnInteraction: false })]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState<number | null>(null);
 
@@ -132,7 +133,7 @@ export default function OwnersTestimonialsSection() {
           {/* Carousel */}
           <div className="relative">
             <div className="overflow-visible" ref={emblaRef}>
-              <div className="flex items-center">
+              <div className="flex items-top">
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={testimonial.id}
@@ -219,7 +220,7 @@ export default function OwnersTestimonialsSection() {
             </div>
 
             {/* Progress Bar - Bottom Center */}
-            <div className="flex justify-center gap-1 mt-6">
+            <div className="flex justify-center gap-1 mt-4">
               {testimonials.map((_, index) => (
                 <button
                   key={index}

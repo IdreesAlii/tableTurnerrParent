@@ -42,7 +42,7 @@ const tabsData = [
     description: "Meeting Owner.com’s standards so you can join with confidence.",
     visual: {
       type: 'image',
-      src: '/Ropes_Laptop_Mockup.webp'
+      src: '/Qualifications_Screenshot.png'
     }
   },
   {

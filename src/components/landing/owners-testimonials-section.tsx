@@ -152,7 +152,7 @@ export default function OwnersTestimonialsSection() {
                         <div className="md:w-52 lg:w-56 flex-shrink-0">
                           <div
                             onClick={() => handleVideoClick(testimonial.id, testimonial.videoUrl)}
-                            className="relative group cursor-pointer h-72 md:h-80 lg:h-[340px]"
+                            className="relative group cursor-pointer h-72 md:h-full"
                           >
                             <img
                               src={testimonial.thumbnailUrl}
@@ -183,34 +183,33 @@ export default function OwnersTestimonialsSection() {
                         </div>
 
                         {/* Content Section - Right Side */}
-                        <div className="flex-1 py-6 px-6 md:py-8 md:px-8 lg:py-10 lg:px-10 flex flex-col justify-between">
+                        <div className="flex-1 py-6 px-6 md:py-8 md:px-8 lg:py-10 lg:px-10 flex flex-col justify-between text-center md:text-left">
                           {/* Quote */}
-                          <p className="text-xl md:text-2xl lg:text-3xl font-normal text-foreground leading-relaxed">
+                          <p className="text-lg md:text-xl lg:text-2xl font-normal text-foreground leading-relaxed">
                             "{testimonial.quote}"
                           </p>
 
                           {/* Metrics and CTA Row */}
-                          <div className="flex flex-wrap items-center gap-6 md:gap-8 mt-6 md:mt-8">
-                            {/* Metrics */}
-                            {testimonial.metrics.map((metric, idx) => (
-                              <div key={idx} className="flex flex-col">
-                                <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-1">
-                                  {metric.value}
-                                </p>
-                                <p className="text-sm md:text-base text-muted-foreground">
-                                  {metric.label}
-                                </p>
-                              </div>
-                            ))}
-
-                            {/* CTA Button */}
+                          <div className="flex flex-col items-center md:flex-row md:justify-between gap-6 mt-8">
+                            <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-4 md:gap-x-8">
+                                {testimonial.metrics.map((metric, idx) => (
+                                <div key={idx}>
+                                    <p className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-1">
+                                    {metric.value}
+                                    </p>
+                                    <p className="text-sm text-muted-foreground">
+                                    {metric.label}
+                                    </p>
+                                </div>
+                                ))}
+                            </div>
                             <a
-                              href={testimonial.caseStudyUrl}
-                              className="ml-auto bg-secondary hover:bg-secondary/80 text-secondary-foreground px-5 py-2.5 rounded-md text-base font-medium transition-colors whitespace-nowrap"
+                                href={testimonial.caseStudyUrl}
+                                className="bg-secondary hover:bg-secondary/80 text-secondary-foreground px-5 py-2.5 rounded-md text-base font-medium transition-colors whitespace-nowrap"
                             >
-                              See {testimonial.name.split(' ')[0]}'s story
+                                See {testimonial.name.split(' ')[0]}'s story
                             </a>
-                          </div>
+                           </div>
                         </div>
                       </div>
                     </motion.div>

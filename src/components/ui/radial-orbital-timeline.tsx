@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MiddleDot } from "@/components/icons/middle-dot";
 
@@ -19,6 +20,7 @@ interface RadialOrbitalTimelineProps {
 export default function RadialOrbitalTimeline({
   timelineData = [],
 }: RadialOrbitalTimelineProps) {
+  const { resolvedTheme } = useTheme();
   const [hasMounted, setHasMounted] = useState(false);
   const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({});
   const [rotationAngle, setRotationAngle] = useState<number>(0);
@@ -96,9 +98,29 @@ export default function RadialOrbitalTimeline({
     return { x, y, angle, zIndex, opacity };
   };
 
+  // Theme-based colors
+  const isDark = resolvedTheme === "dark";
+  const bgMain = isDark ? "bg-black" : "bg-white";
+  const bgPulse = isDark ? "bg-white" : "bg-black";
+  const borderPulse = isDark ? "border-white/20" : "border-black/20";
+  const borderPulse2 = isDark ? "border-white/10" : "border-black/10";
+  const dotColor = isDark ? "text-black" : "text-white";
+  const borderCircle = isDark ? "border-white/10" : "border-black/10";
+  const nodeBg = isDark ? "bg-white text-black" : "bg-black text-white";
+  const nodeBgInactive = isDark ? "bg-black text-white" : "bg-white text-black";
+  const nodeBorderActive = isDark ? "border-white shadow-lg shadow-white/30" : "border-black shadow-lg shadow-black/30";
+  const nodeBorderInactive = isDark ? "border-white/40" : "border-black/40";
+  const nodeTextActive = isDark ? "text-white scale-125" : "text-black scale-125";
+  const nodeTextInactive = isDark ? "text-white/70" : "text-black/70";
+  const cardBg = isDark ? "bg-black/90" : "bg-white/90";
+  const cardBorder = isDark ? "border-white/30" : "border-black/30";
+  const cardShadow = isDark ? "shadow-white/10" : "shadow-black/10";
+  const cardLine = isDark ? "bg-white/50" : "bg-black/50";
+  const cardText = isDark ? "text-white/80" : "text-black/80";
+
   return (
     <div
-      className="w-full h-screen flex flex-col items-center justify-center bg-black overflow-hidden"
+      className={`w-full h-screen flex flex-col items-center justify-center ${bgMain} overflow-hidden`}
       ref={containerRef}
       onClick={handleContainerClick}
     >
@@ -106,37 +128,33 @@ export default function RadialOrbitalTimeline({
         <div
           className="absolute w-full h-full flex items-center justify-center"
           ref={orbitRef}
-          style={{
-            perspective: "1000px",
-          }}
+          style={{ perspective: "1000px" }}
         >
-          <div className="absolute w-16 h-16 rounded-full bg-white animate-pulse flex items-center justify-center z-10">
-            <div className="absolute w-20 h-20 rounded-full border border-white/20 animate-ping opacity-70"></div>
+          <div className={`absolute w-16 h-16 rounded-full ${bgPulse} animate-pulse flex items-center justify-center z-10`}>
+            <div className={`absolute w-20 h-20 rounded-full border ${borderPulse} animate-ping opacity-70`}></div>
             <div
-              className="absolute w-24 h-24 rounded-full border border-white/10 animate-ping opacity-50"
+              className={`absolute w-24 h-24 rounded-full border ${borderPulse2} animate-ping opacity-50`}
               style={{ animationDelay: "0.5s" }}
             ></div>
-            <MiddleDot className="w-8 h-8" />
+            <MiddleDot className={`w-8 h-8 ${dotColor}`} />
           </div>
 
-          <div className="absolute w-96 h-96 rounded-full border border-white/10"></div>
+          <div className={`absolute w-96 h-96 rounded-full border ${borderCircle}`}></div>
 
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
             const isExpanded = expandedItems[item.id];
             const Icon = item.icon;
-
             const nodeStyle = {
               transform: `translate(${position.x}px, ${position.y}px)`,
               zIndex: isExpanded ? 200 : position.zIndex,
               opacity: isExpanded ? 1 : position.opacity,
               transition: "transform 0.7s, opacity 0.7s, z-index 0.7s",
             };
-
             return (
               <div
                 key={item.id}
-                ref={(el) => (nodeRefs.current[item.id] = el)}
+                ref={el => { nodeRefs.current[item.id] = el; }}
                 className="absolute transition-all duration-700 cursor-pointer flex flex-col items-center"
                 style={nodeStyle}
                 onClick={(e) => {
@@ -145,38 +163,24 @@ export default function RadialOrbitalTimeline({
                 }}
               >
                 <div
-                  className={`
-                  w-10 h-10 rounded-full flex items-center justify-center
-                  ${ isExpanded ? "bg-white text-black" : "bg-black text-white" }
-                  border-2 
-                  ${ isExpanded ? "border-white shadow-lg shadow-white/30" : "border-white/40" }
-                  transition-all duration-300 transform
-                  ${isExpanded ? "scale-150" : ""}
-                `}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300 transform ${isExpanded ? nodeBg : nodeBgInactive} ${isExpanded ? nodeBorderActive : nodeBorderInactive} ${isExpanded ? "scale-150" : ""}`}
                 >
                   <Icon size={16} />
                 </div>
-
                 <div
-                  className={`
-                  absolute top-16 text-center
-                  text-xs font-semibold tracking-wider
-                  transition-all duration-300
-                  ${isExpanded ? "text-white scale-125" : "text-white/70"}`
-                }
+                  className={`absolute top-16 text-center text-xs font-semibold tracking-wider transition-all duration-300 ${isExpanded ? nodeTextActive : nodeTextInactive}`}
                 >
                   {item.title}
                 </div>
-
                 {isExpanded && (
-                  <Card className="absolute top-32 left-1/2 -translate-x-1/2 w-64 bg-black/90 backdrop-blur-lg border-white/30 shadow-xl shadow-white/10 overflow-visible">
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/50"></div>
+                  <Card className={`absolute top-32 left-1/2 -translate-x-1/2 w-64 ${cardBg} backdrop-blur-lg ${cardBorder} shadow-xl ${cardShadow} overflow-visible`}>
+                    <div className={`absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 ${cardLine}`}></div>
                     <CardHeader className="pb-2">
                       <CardTitle className="text-sm">
                         {item.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="text-xs text-white/80">
+                    <CardContent className={`text-xs ${cardText}`}>
                       <p>{item.content}</p>
                     </CardContent>
                   </Card>

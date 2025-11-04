@@ -4,6 +4,7 @@ import { Toaster } from '@/components/ui/toaster'
 import InitialLoader from '@/components/ui/initial-loader'
 import ThemeProvider from '@/components/theme-provider'
 import ThemeSwitch from '@/components/ui/theme-switch'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tableturnerr.com'),
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
    <html lang="en" suppressHydrationWarning>
       <head>
+        {/* LocalBusiness Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -102,6 +104,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           }}
         />
 
+        {/* Website Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -119,6 +122,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           }}
         />
 
+        {/* Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -130,6 +134,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           rel="stylesheet"
         />
       </head>
+
       <body>
         <ThemeProvider>
           <InitialLoader showOnce={false}>{children}</InitialLoader>
@@ -140,6 +145,24 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <ThemeSwitch />
           </div>
         </ThemeProvider>
+
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-9XH1E85X8S"
+        />
+
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-9XH1E85X8S');
+            `,
+          }}
+        />
       </body>
     </html>
   );

@@ -1,7 +1,10 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export',
+  // When exporting static HTML, enable trailingSlash so routes are emitted as
+  // directories with index.html which some static hosts prefer.
+  trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -9,6 +12,10 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
+    // Disable Next's image optimization for static export; this makes images
+    // render as plain <img> tags and avoids runtime optimization that requires
+    // a server. Also keep remotePatterns for allowed remote image hosts.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

@@ -27,7 +27,11 @@ export function HeroSection() {
                         Turn Your Restaurant Into a Brand.
                     </h1>
                     <p className="mt-8 text-balance text-lg text-primary/85 dark:text-muted-foreground">
-                        The big restaurants keep growing — small restaurants stay stuck because they don’t “qualify” for the tools big companies offer. At Tableturnerr, we build your website, your presence, and your brand so you do qualify — then we connect you to Owner.com and waive your setup fee so you can finally scale.
+                        The big restaurants keep growing — small restaurants stay stuck because they don’t “qualify” for the tools big companies offer. At Tableturnerr, we build your website, your presence, and your brand so you do qualify — then we connect you to &nbsp;
+                        <button className='underline-animate text-primary' onClick={() => scrollToSection('owner-com')}>
+                          Owner.com &nbsp;
+                         </button>
+                          and waive your setup fee so you can finally scale.
                     </p>
 
                     <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row">

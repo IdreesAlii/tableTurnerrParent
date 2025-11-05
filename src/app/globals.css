@@ -195,3 +195,13 @@
     width: 100%;
   }
 }
+
+/* Ensure Bloomberg links are visible on light theme only */
+html.light a[href*="bloomberg"] {
+  color: #0f172a !important; /* dark color for visibility on white background */
+  text-decoration-color: currentColor;
+}
+
+html.light a[href*="bloomberg"]:hover {
+  color: #071028 !important;
+}
